@@ -1,3 +1,33 @@
-<script>
-	alert("안녕하세요.");
-</script>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery</title>
+	<script src="https://code.jquery.com/jquery-1.12.3.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('.own').mouseenter(function(){
+				$(this).fadeTo('slow', 0.35);
+			});
+
+			$('.own').mouseleave(function(){
+				$(this).fadeTo('slow', 1);
+			});
+		});
+	</script>
+
+	<style>
+		.own {
+			background-color: #ff0000;
+			width: 100px;
+			height: 160px;
+			margin: 0 auto;			
+		}
+	</style>
+</head>
+<body>
+	<div class="own">
+		휘
+	</div>
+</body>
+</html>

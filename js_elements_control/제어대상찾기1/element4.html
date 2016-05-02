@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul>
+		<li>HTML</li>
+		<li class="active">CSS</li>
+		<li class="active">JS</li>
+	</ul>
+	<ol>
+		<li>HTML</li>
+		<li class="active">CSS</li>
+		<li>JS</li>
+	</ol>
+	<script>
+	var lis = document.querySelectorAll('.active');
+	for(var name in lis){
+		lis[name].style.color="red";
+	} // -> 모든 엘리먼트를 컨트롤한다.
+	/*
+	 
+		var li = document.querySelector('li');
+		li.style.color='red';
+
+		var li = document.querySelector('.active');
+		li.style.color='blue';
+	 */
+		//document.querySelector 
+		//css 선택자의 문법을 이용해서 객체를 조회할수도 있다.
+	</script>
+</body>
+</html>

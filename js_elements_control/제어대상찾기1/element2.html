@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul>
+		<li>HTML</li>
+		<li class='active'>CSS</li>
+		<li class="active">JS</li>
+	</ul>
+
+	<script>
+		var lis = document.getElementsByClassName('active');
+		for(var i=0; i<lis.length; i++) {
+			lis[i].style.color='blue';
+		}
+
+		//class 속성의 값을 기준으로 객체를 조회할수도 있다.
+	</script>
+</body>
+</html>

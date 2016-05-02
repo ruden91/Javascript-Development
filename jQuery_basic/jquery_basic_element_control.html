@@ -1,0 +1,43 @@
+<!-- 
+     제작자 : 박병장
+     수정날짜 : 2016.05.02
+     내용 : jQuery
+     
+     -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script src="lib/jQuery/jquery-2.2.3.min.js"></script>
+    <style>
+      html, body, p, ul, ol, li {
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        width: 960px;
+        height: 1500px;
+        margin: 0 auto;
+        background-color: #f7f7f2;
+      }
+    </style>
+</head>
+<body>
+  <div class="container">
+  <p>안녕하세요. jQuery basic 강의입니다.</p>
+  </div>
+
+
+    <script>
+    $(document).ready(function(){
+        $('p').css('font-size', '25px');
+        $('p').css('color', 'green');
+    });
+
+    //jQuery를 이용하면 DOM을 사용하는 것 보다 훨씬 효율적으로 필요한 객체를 조회할 수 있다. jQuery는 객체를 조회할 때 CSS 선택자를 이용한다.
+    //$()는 jQuery의 함수이다. 이 함수의 인자로 CSS 선택자(li)를 전달하면 jQuery 객체라는 것을 리턴한다. 이 객체는 선택자에 해당하는 엘리먼트를 제어하는 다양한 메소드를 가지고 있다. 위의 그림에서 css는 선택자에 해당하는 객체들의 style에 color:red로 변경한다.
+    </script>
+</body>
+</html>

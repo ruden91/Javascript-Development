@@ -1,0 +1,87 @@
+<!-- 
+     제작자 : 박병장
+     수정날짜 : 2016.05.02
+     내용 : jQuery 사용예제1
+     
+     -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script src="lib/jQuery/jquery-2.2.3.min.js"></script>
+    <style>
+      html, body, p, ul, ol, li {
+        margin: 0;
+        padding: 0;
+      }
+
+      ul, ol {
+        list-style: none;
+      }
+      .container {
+        width: 960px;
+        height: 1500px;
+        margin: 0 auto;
+        background-color: #f7f7f2;
+      }
+    </style>
+</head>
+<body>
+  <div class="container">
+    <ul id="demo">
+        <li class="active">HTML</li>
+        <li id="active">CSS</li>
+        <li class="active">JavaScript</li>
+    </ul>
+    <ul id="execute">
+      <li>
+          <pre>
+            var lis = document.getElementsByTagName('li');
+            for(var i=0; i&lt;lis.length; i++){
+            lis[i].style.color='red';   
+          </pre>
+          <pre>
+             $('li').css('color', 'red')
+          </pre>
+          <input type="button" value="execute" onclick="$('li').css('color', 'red')" />
+      </li>
+      <li>
+          <pre>
+            var lis = document.getElementsByClassName('active');
+            for(var i=0; i &lt; lis.length; i++){
+                lis[i].style.color='red';
+            }
+         </pre>
+          <pre>
+            $('.active').css('color', 'red')
+          </pre>
+          <input type="button" value="execute" onclick="$('.active').css('color', 'red')" />
+      </li>
+
+      <li>
+        <pre>
+          var li = document.getElementById('active');
+          li.style.color='red';
+          li.style.textDecoration='underline';
+        </pre>
+        <pre>
+           $('#active').css('color', 'red').css('textDecoration', 'underline');
+        </pre>
+        <input type="button" value="execute" onclick="$('#active').css('color', 'red').css('textDecoration', 'underline')" />
+      </li>
+    </ul>
+  </div>
+
+
+    <script>
+    $(document).ready(function(){
+        $('p').css('font-size', '25px');
+        $('p').css('color', 'green');
+    });
+
+    //아래는 DOM을 이용했을 때와 jQuery를 이용했을 때를 비교한 것이다. 아래 코드는 복잡하다. 실행결과만 확인하자.
+    </script>
+</body>
+</html>

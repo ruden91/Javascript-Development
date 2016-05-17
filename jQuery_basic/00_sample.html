@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD Xhtml 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title> </title>
+    <style>
+        body{
+            font-size:9pt;
+            font-family:"굴림";       
+        }
+        div, p, ul, li{
+            border:1px #eeeeee solid;
+            margin:10px;
+        }
+        ul {
+         padding:10px;
+        }
+        li.select {
+            background-color:#ccc;
+        }
+    </style>
+    
+    <script type="text/javascript"  src="../../libs/jquery-1.11.0.min.js"> </script>
+    <script>
+            /*
+            예제:
+            문서에서 id가 header인 노드를 찾아 border속성을 “4px solid #f00”으로 변경해주세요.
+
+        */
+            $(document).ready(function() {
+                // 코드는 여기에 작성할 예정입니다.
+                alert("사용할 준비 완료");
+            });
+
+    </script>
+</head>
+    
+<body>
+    <div id="samplePage" class="page" >
+        샘플 페이지(div, id=samplePage, class=page)
+        <div id="header">               
+            헤더 영역(div, id=header)
+        </div>
+        <div id="content" class="sample-content">
+            노드 찾기(div, id=content, class=sample-content)
+            <ul class="menu">
+                일반 노드 찾기(ul, class=menu)
+                <li data-value="1">id로 찾기(li, data-value=1)</li>
+                <li class="select">tag로 찾기(li, class=select)</li>
+                <li data-value="2">class로 찾기(li, data-value=2)</li>
+                <li class="test1">속성으로 찾기(li, class=test1)</li>
+            </ul>
+            <div class="content-data">
+                자식 노드 찾기(div, class=content-data)
+                <p class="test1">1. 모든 자식 노드 찾기(p, class=test1)</p>
+                <p>2. 특정 자식 노드만 찾기(p)</p>
+                <p class="test2">3. 마지막 자식 노드 찾기(p, class=test2)</p>
+            </div>
+        </div>
+        <div id="footer">               
+            푸터 영역(div, id=footer)
+        </div>      
+    </div>  
+</body>
+
+</html>

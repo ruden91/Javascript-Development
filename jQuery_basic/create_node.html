@@ -28,16 +28,11 @@
              추가 버튼을 클릭할 때마다 신규 메뉴 아이템을 생성해 주세요.
 
              */
-            $(function() {
-                var count = 0;
-             $('#btnAdd').click(function() {
-                count++;
-
-                //신규 노드 생성
-                $('<li>new menu' + count + '</li>').insertAfter('ul.menu li.select');
-
-                })   
-            })
+             $(function() {
+                $('#btnAdd').click(function() {
+                    $('ul.menu li:odd').remove();
+                })
+             })
 
 
 

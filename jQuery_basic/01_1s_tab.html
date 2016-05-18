@@ -46,7 +46,7 @@
             }
         </style> 
 
-        <script src="../../../libs/jquery-1.11.0.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
         <script>
             /*
@@ -54,9 +54,20 @@
              탭메뉴 아이템 개수만큼 1초에 한 번씩 순차적으로 탭메뉴 아이템에 select 클래스를 적용해 주세요.
 
              */
-            $(document).ready(function() {
+             $(function() {
+                var currentIndex = 0;
+                var $menuItem = $('#tabMenu1 li');
 
-            });
+                var timerID = setInterval(function() {
+                    var $item = $menuItem.eq(currentIndex);
+                    $item.addClass('select');
+                    currentIndex++;
+
+                    if(currentIndex >= $menuItem.length) {
+                        clearInterval(timerID);
+                    }
+                }, 500)
+             })
 
         </script>
 

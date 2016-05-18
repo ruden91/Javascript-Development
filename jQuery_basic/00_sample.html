@@ -28,8 +28,9 @@
 
         */
             $(function() {
-                $('#samplePage').children('#header').css('border', '4px solid #f00');
-                console.log($('#samplePage').children('#header').length);
+                var $menu = $('ul.menu');
+
+                $menu.children(':first').css('border', '4px solid #f00')
             })
 
     </script>

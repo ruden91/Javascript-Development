@@ -29,8 +29,10 @@
         */
             $(function() {
                 var $menu = $('ul.menu');
+                var $children = $menu.children();
 
-                $menu.children(':first').css('border', '4px solid #f00')
+                $children.first().css('border', '4px solid #f00');
+                $children.last().css('border', '4px solid #f00');
             })
 
     </script>

@@ -20,17 +20,17 @@
         }
     </style>
     
-    <script type="text/javascript"  src="../../libs/jquery-1.11.0.min.js"> </script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script>
             /*
             예제:
             문서에서 id가 header인 노드를 찾아 border속성을 “4px solid #f00”으로 변경해주세요.
 
         */
-            $(document).ready(function() {
-                // 코드는 여기에 작성할 예정입니다.
-                alert("사용할 준비 완료");
-            });
+            $(function() {
+                $('#samplePage').children('#header').css('border', '4px solid #f00');
+                console.log($('#samplePage').children('#header').length);
+            })
 
     </script>
 </head>
@@ -38,7 +38,7 @@
 <body>
     <div id="samplePage" class="page" >
         샘플 페이지(div, id=samplePage, class=page)
-        <div id="header">               
+        <div id="header" class="test">               
             헤더 영역(div, id=header)
         </div>
         <div id="content" class="sample-content">

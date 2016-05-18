@@ -28,11 +28,10 @@
 
         */
             $(function() {
-                var $menu = $('ul.menu');
-                var $children = $menu.children();
+                var $menu = $('div');
+                var $children = $menu.children(':last');
 
-                $children.first().css('border', '4px solid #f00');
-                $children.last().css('border', '4px solid #f00');
+                $children.css('border', '4px solid #f00');
             })
 
     </script>

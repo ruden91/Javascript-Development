@@ -23,9 +23,9 @@
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script>
         $(function() {
-            var $menu = $('ul li.select');
-
-            $menu.prev().css('border', '4px solid #f00');
+            var $menu = $('ul li');
+            var $menuLast = $menu.first();
+            $menuLast.nextAll().css('border', '4px solid #f00')
         })
 
     </script>

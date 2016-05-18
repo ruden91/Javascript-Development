@@ -29,9 +29,7 @@
         */
             $(function() {
                 var $menu = $('ul.menu');
-                var $eqMenu = $menu.children();
-
-                $eqMenu.eq(1).css('border', '4px solid #f00');
+                $menu.parent().css('border', '4px solid #f00')
             })
 
     </script>

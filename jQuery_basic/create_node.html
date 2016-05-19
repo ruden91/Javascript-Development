@@ -29,8 +29,9 @@
 
              */
              $(function() {
-                $('#btnAdd').click(function() {
-                    $('ul.menu li:odd').remove();
+                $('ul.menu li').click(function() {
+                    var $item = $(this);
+                    $item.html("<a href='webruden'> new menu" + (1+$item.index()))
                 })
              })
 

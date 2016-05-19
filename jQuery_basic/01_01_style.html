@@ -14,12 +14,11 @@
     </style>
     
     <script>
-        window.onload = function() {
-            var content = document.getElementById('test1');
-
-            content.style.fontSize = '12px';
-            content.style.font-size = '12px'; //낙타 표기법으로 접근하지 않으면 에러가 뜬다
-        }
+        $(function() {
+            var $content = $('#test1');
+            $content.css('fontSize', '12px');
+            $content.css('font-size', '12px');
+        })
     </script>
     
 </head>

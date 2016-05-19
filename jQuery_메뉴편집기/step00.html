@@ -43,45 +43,61 @@
              미션07 – 선택한 메뉴 아이템 위치를 아래로 이동
 
              */
-             var $menu = null;
-             var $menuName = null;
-             var $selectedItem = null;
-             $(function() {
-                init();
-                initEvent();
-             })
+        // 전역 변수 선언 및 초기화
+        var $menu = null;
+        var $menuName = null;
+        var $selectedItem = null;
+        $(document).ready(function(){
+            init();
+            initEvent();
+        });
 
-             function init() {
-                $menu = $('ul.menu');
-                $menuName = $('#menuName');
-             }
+        // 전역에서 사용할 요소 초기화
+        function init(){
+            $menu = $("ul.menu");
+            $menuName = $("#menuName");
+        }
 
-             function initEvent(){
-                $('#add').click(function() {
-                    addMenu();
-                })
+        // 이벤트 초기화
+        function initEvent(){
+            // 메뉴 추가
+            $("#add").click(function(){
+                addMenu();
+            })
 
-                $menu.on('click', 'li', function() {
-                    setSelectItem($(this));
-                })
-             }
+            $menu.on("click", "li",function(){
+                selectItem($(this));
+            })
+        }
 
-             function addMenu() {
-                var menuName = $menuName.val();
+        // 메뉴 추가 처리
+        function addMenu(){
+            // 텍스트 입력 값 구하기
+            var menuName = $menuName.val();
 
-                var newMenuItem = '<li>' + menuName + '</li>';
+            // 신규 메뉴 아이템 문자열 만들기
+            var newMenuItem = "<li>"+menuName+"</li>";
 
+            // 선택 메뉴 아이템이 있는 경우 신규 메뉴 아이템을 선택 메뉴 아이템 아래에 추가
+            if($selectedItem){
+                $selectedItem.after(newMenuItem);
+            }else {
+                // 메뉴에 신규 메뉴 아이템 추가
                 $menu.append(newMenuItem);
-             }
+            }
+        }
 
-             function setSelectItem($item) {
-                if($selectedItem != null) {
-                    $selectedItem.removeClass('select');
-                }
+        // 메뉴 선택 처리
+        function selectItem($item){
+            // 기존 선택 메뉴 아이템이 있는 경우 선택 효과 제거
+            if($selectedItem!=null)
+                $selectedItem.removeClass("select");
 
-                $selectedItem = $item;
-                $selectedItem.addClass('select');
-             }
+            // 신규 선택 메뉴 아이템 처리
+            $selectedItem = $item;
+            $selectedItem.addClass("select");
+
+        }
 
         </script>
     </head>

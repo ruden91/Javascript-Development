@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD Xhtml 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title> </title>
+    <link type="text/css" rel="stylesheet" href="common.css" />
+    <style>
+        div {
+            margin:30px;
+            padding:30px;
+            font-size:24px;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            var content = document.getElementById("test1");
+    
+            // 인라인 스타일 접근 방법
+            console.log("1. color =", content.style.color);
+    
+            // 인라인 스타일이 아닌 속성을 접근하는 경우
+            console.log("2. border =", content.style.border); // null;
+    
+            // 내부, 외부 스타일 접근 방법
+            console.log("3. border =", window.getComputedStyle(content).border);
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+    
+<body>
+
+    <div id="test1" class="content" style="color:#f00">
+        스타일 다루기 테스트입니다.
+    </div>        
+</body>
+
+</html>

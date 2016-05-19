@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD Xhtml 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title></title>
+        <style>
+            body {
+                font-size: 9pt;
+                font-family: "굴림";
+            }
+            div, p, ul, li {
+
+            }
+            ul.menu {
+                padding: 10px;
+                list-style: none;
+                border: 1px #000 solid;
+            }
+            ul.menu li {
+                border: 1px #eeeeee solid;
+                margin: 10px;
+            }
+
+            li.select {
+                background-color: #ccc;
+            }
+        </style>
+
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <script>
+            /*
+
+             이번 미션에서는 메뉴 편집기를 만들어 볼 텐데요.
+             각각의 기능을 다음과 같은 순서로 나눠 구현해보겠습니다.
+
+             미션01 – 마지막 위치에 메뉴 아이템 추가
+             미션02 – 메뉴 아이템 선택 처리
+             미션03 – 선택 메뉴 아이템 아래에 신규 메뉴 아이템 추가
+             미션04 – 선택한 메뉴 아이템 수정
+             미션05 – 선택한 메뉴 아이템 삭제
+             미션06 – 선택한 메뉴 아이템 위치를 위로 이동
+             미션07 – 선택한 메뉴 아이템 위치를 아래로 이동
+
+             */
+             var $menu = null;
+             var $menuName = null;
+             var $selectedItem = null;
+             $(function() {
+                init();
+                initEvent();
+             })
+
+             function init() {
+                $menu = $('ul.menu');
+                $menuName = $('#menuName');
+             }
+
+             function initEvent(){
+                $('#add').click(function() {
+                    addMenu();
+                })
+
+                $menu.on('click', 'li', function() {
+                    setSelectItem($(this));
+                })
+             }
+
+             function addMenu() {
+                var menuName = $menuName.val();
+
+                var newMenuItem = '<li>' + menuName + '</li>';
+
+                $menu.append(newMenuItem);
+             }
+
+             function setSelectItem($item) {
+                if($selectedItem != null) {
+                    $selectedItem.removeClass('select');
+                }
+
+                $selectedItem = $item;
+                $selectedItem.addClass('select');
+             }
+
+        </script>
+    </head>
+
+    <body>
+        <div>
+            <input type="text" id="menuName" />
+            <button id="add">추가</button>
+            <button id="update">수정</button>
+            <button id="remove">삭제</button>
+            <button id="up">UP</button>
+            <button id="down">DOWN</button>
+        </div>
+        <ul class="menu">
+
+        </ul>
+    </body>
+
+</html>

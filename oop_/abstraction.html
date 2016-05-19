@@ -3,25 +3,30 @@
 <head>
 	<meta charset="UTF-8">
 	<title>oop - abstraction</title>
+		<!-- 이미지 슬라이더를 추상화하기 -->
 	<script>	
-		function TV() {
-			this.모델명;
-			this.해상도크기;
+		function ImageSlider(selector) {
+			this.selectIndex;
+			this.$imageList;
 		}
 
-		TV.prototype.전원On=function() {
-
-		}
-
-		TV.prototype.전원Off=function() {
+		ImageSlider.prototype.startAutoPlay=function() {
 
 		}
 
-		TV.prototype.채널변경=function() {
+		ImageSlider.prototype.stopAutoPlay=function() {
 
 		}
 
-		TV.prototype.사운드조절기능=function() {
+		ImageSlider.prototype.nextImage=function() {
+
+		}
+
+		ImageSlider.prototype.prevImage=function() {
+
+		}
+
+		ImageSlider.prototype.setImageAt=function(index) {
 			
 		}
 	</script>

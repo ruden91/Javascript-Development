@@ -5,28 +5,21 @@
 	<title>oop - abstraction</title>
 		<!-- 이미지 슬라이더를 추상화하기 -->
 	<script>	
-		function ImageSlider(selector) {
-			this.selectIndex;
-			this.$imageList;
+		function MyClass() {
+			//public
+			this.techpro = 10;
+
+			//private / protected
+			this._techpro2 = 20;
 		}
 
-		ImageSlider.prototype.startAutoPlay=function() {
-
-		}
-
-		ImageSlider.prototype.stopAutoPlay=function() {
-
-		}
-
-		ImageSlider.prototype.nextImage=function() {
+		//public 메서드
+		MyClass.prototype.techfuc = function() {
 
 		}
 
-		ImageSlider.prototype.prevImage=function() {
-
-		}
-
-		ImageSlider.prototype.setImageAt=function(index) {
+		//private protected
+		MyClass.prototype._techfunc2 = function () {
 			
 		}
 	</script>

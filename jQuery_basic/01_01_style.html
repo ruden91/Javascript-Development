@@ -4,6 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title> </title>
     <link type="text/css" rel="stylesheet" href="common.css" />
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <style>
         div {
             margin:30px;
@@ -11,21 +12,17 @@
             font-size:24px;
         }
     </style>
+    
     <script>
-        window.onload = function() {
-            var content = document.getElementById("test1");
-    
-            // 인라인 스타일 접근 방법
-            console.log("1. color =", content.style.color);
-    
-            // 인라인 스타일이 아닌 속성을 접근하는 경우
-            console.log("2. border =", content.style.border); // null;
-    
-            // 내부, 외부 스타일 접근 방법
-            console.log("3. border =", window.getComputedStyle(content).border);
-        }
+        $(function() {
+            var $content = $('#test1');
+
+            console.log($content.css('color'));
+
+            console.log($content.css('border'));
+        })
     </script>
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    
 </head>
     
 <body>

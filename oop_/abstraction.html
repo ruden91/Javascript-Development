@@ -5,38 +5,40 @@
 	<title>oop - abstraction</title>
 		<!-- 이미지 슬라이더를 추상화하기 -->
 	<script>	
-		function MyClassA() {
+		function MyParent() {
 			this.property1 = 10;
 		}
 
-		MyClassA.prototype.method1 = function() {
+		MyParent.prototype.method1 = function() {
 			console.log(this.property1);
 		}
 
-		MyClassA.prototype.method2 = function() {
+		function MyClassA() {
+
+		}
+
+		MyClassA.prototype = new MyParent();
+
+		MyClassA.prototype.method2=function() {
 			console.log('이 기능은 MyClassA에 있는 기능입니다.');
 		}
 
 		function MyClassB() {
-			this.property1 = 10;
+
 		}
 
-		MyClassB.prototype.method1 = function() {
-			console.log(this.property1);
-		}
+		MyClassB.prototype = new MyParent();
 
 		MyClassB.prototype.method2 = function() {
 			console.log('이 기능은 MyClassB에 있는 기능입니다.');
 		}
 
 		var classA = new MyClassA();
-
 		console.log(classA.property1);
 		classA.method1();
 		classA.method2();
 
 		var classB = new MyClassB();
-
 		console.log(classB.property1);
 		classB.method1();
 		classB.method2();

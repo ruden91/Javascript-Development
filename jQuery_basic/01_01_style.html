@@ -14,11 +14,12 @@
     </style>
     
     <script>
-        $(function() {
-            var $content = $('#test1');
-            $content.css('fontSize', '12px');
-            $content.css('font-size', '12px');
-        })
+        window.onload = function() {
+            var content = document.getElementById('test1');
+
+            content.style.fontSize = '12px';
+            content.style.border = '4px solid #f00';
+        }
     </script>
     
 </head>

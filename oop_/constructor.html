@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title> s</title>
+
+	<script>
+		/*
+		예제01: 메서드 오버라이드
+		 풀이 전 코드를 수정하지 않고 부모 클래스(MyParent)method1()을 실행하는 경우 다음과 같이 출력되게 만들어 주세요.
+		 실행결과:
+		 “프로퍼티 1은 data1 입니다.”
+
+		 */
+		// 부모 클래스
+		function MyParent() {
+			this.property1 = 'value1';
+		}
+
+		MyParent.prototype.method1 = function() {
+			console.log(this.property1);
+		}
+
+		function MyChild() {
+
+		}
+
+		MyChild.prototype = new MyParent();
+		MyChild.prototype.constructor = MyChild;
+
+		var parent1 = new MyParent();
+		var child1 = new MyChild();
+
+		if(parent1.constructor == MyParent) {
+			console.log('parent1는 MyParent의 인스턴스입니다.');
+		}
+
+		if(child1.constructor == MyChild) {
+			console.log('child는1는 MyChild의 인스턴스입니다.');
+		}
+
+
+
+
+		</script>
+	</head>
+
+	<body>
+
+		
+		
+		
+		
+	</body>
+</html>

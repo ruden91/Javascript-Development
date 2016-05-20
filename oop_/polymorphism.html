@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title></title>
+
+	<style>
+		div.image-container {
+			position: relative;
+			border:1px solid #000;
+		}
+		div.image-container img {
+
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 120px;
+		}
+
+	</style>
+
+
+	<script type="text/javascript"  src="../../../libs/jquery-1.11.0.min.js"></script>
+	<script>
+		/*
+
+		 미션: 심플 이미지 갤러리 만들기
+		 아래에 등장하는 풀이 전 코드는 가로로 정렬하는 기능만 가지고 있는 심플 갤러리입니다.
+		 이 코드를 수정해 다음 요구사항에 맞게 동작하도록 만들어 주세요.
+		 요구사항:
+			 1. 가로정렬 버튼 클릭 시 이미지를 가로로 정렬해 주세요.
+			 2. 세로정렬 버튼 클릭 시 이미지를 세로로 정렬해 주세요.
+			 3. 램덤정렬 버튼 클릭 시 이미지를 랜덤하게 정렬해 주세요.
+			 4. 바둑판정렬 버튼 클릭 시 이미지를 3개씩 이미지를 정렬해 주세요.
+			 5. 단, 풀이는 다형성을 사용한 경우와 그렇지 않은 경우 두 가지로 나눠 구현해 주세요.
+
+		 */
+		$(document).ready(function() {
+			// 이미지 찾기.
+			var img1 = new SimpleGallery("#container1 img");
+
+			// 버튼 클릭 이벤트 실행.
+			$("#btnHorizontal").click(function() {
+				img1.show();
+			});
+		});
+
+		// 심플갤러리 클래스
+		function SimpleGallery(selector){
+			this.$images = null;
+			this.init(selector);
+		}
+
+		// 요소 초기화
+		SimpleGallery.prototype.init=function(selector){
+			this.$images = $(selector);
+		}
+
+		// 이미지를 가로로 정렬
+		SimpleGallery.prototype.show=function(){
+			// 이미지 개수 구하기.
+			var length = this.$images.length;
+			// 이미지 배열하기.
+			for (var i = 0; i < length; i++) {
+				var x = i * 200;
+
+				this.$images.eq(i).css({
+					left : x
+				});
+
+			}
+		}
+	</script>
+</head>
+
+<body>
+	<div>
+		<button id="btnHorizontal">가로정렬</button>
+		<button id="btnVertical">세로정렬</button>
+
+		<button id="btnRandom">랜덤정렬</button>
+		<button id="btnGrid">바둑판정렬</button>
+	</div>
+
+	<div class="image-container" id="container1">
+		<img src="banners/1.png" >
+		<img src="banners/2.png" >
+		<img src="banners/3.png" >
+		<img src="banners/4.png" >
+		<img src="banners/5.png" >
+		<img src="banners/6.png" >
+		<img src="banners/7.png" >
+		<img src="banners/8.png" >
+	</div>
+</body>
+</html>

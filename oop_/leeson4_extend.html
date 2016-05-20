@@ -34,98 +34,29 @@
 
      */      
 
-        $(document).ready(function(){
-            // 인스턴스 생성
-            var gallery1 = new SimpleGalleryChild();
-            gallery1.init("#container1 img");
-            $("#btnStart").click(function(){
-                // 이미지 정렬
-                gallery1.showAni(3,150,150);
-            });
+            // 부모 클래스
+    function MyParent(param1) {
+        this.property1 = param1;
+    }
 
-            
+    MyParent.prototype.method1 = function() {
+        console.log(this.property1);
+    }
 
-        });
+    function MyChild(param1) {
+        MyParent.call(this, param1);
+    }
 
+    MyChild.prototype = new MyParent();
+    MyChild.prototype.constructor = MyChild;
 
-        function SimpleGallery(){
-            // 프로퍼티 생성
-            this.$images = null;
-
-        }
-
-        // 요소 초기화
-        SimpleGallery.prototype.init=function(selector){
-            this.$images = $(selector);
-        }
-
-
-        // 이미지 출력 메서드 추가
-        SimpleGallery.prototype.show=function(count, imageWidth, imageHeight){
-            // 이미지 개수 구하기.
-            var length = this.$images.length;
-
-            // 이미지 배열하기.
-            for(var i=0;i<length;i++){
-                // n번째 이미지 구하기
-                var $img = this.$images.eq(i);
-
-
-                // 위치 값 구하기
-                var x = 100+((i%count)*imageWidth);
-                var y = 100+(parseInt(i/count)*imageHeight);
-
-                // 위치 설정
-                $img.css({
-                    left:x,
-                    top:y
-                });
-            }
-        }
-
-        function SimpleGalleryChild() {
-
-        }
-
-        SimpleGalleryChild.prototype = new SimpleGallery();
-
-        // 이미지 출력 메서드 추가
-        SimpleGalleryChild.prototype.showAni=function(count, imageWidth, imageHeight){
-            // 이미지 개수 구하기.
-            var length = this.$images.length;
-
-            // 이미지 배열하기.
-            for(var i=0;i<length;i++){
-                // n번째 이미지 구하기
-                var $img = this.$images.eq(i);
-
-
-                // 위치 값 구하기
-                var x = 100+((i%count)*imageWidth);
-                var y = 100+(parseInt(i/count)*imageHeight);
-
-                // 위치 설정
-                $img.animate({
-                    left:x,
-                    top:y
-                }, 1000);
-            }
-        }
+    var child1 = new MyChild('data1');
+    child1.method1();
     </script>
 </head>
     
 <body>
-    <button id="btnStart">이미지 정렬하기</button>
-    <div class="image-container" id="container1">
-        <img src="banners/1.png" >
-        <img src="banners/2.png" >
-        <img src="banners/3.png" >
-        <img src="banners/4.png" >
-        <img src="banners/5.png" >
-        <img src="banners/6.png" >
-        <img src="banners/7.png" >
-        <img src="banners/8.png" >   
-    </div>
+
      
 </body>
 </html>

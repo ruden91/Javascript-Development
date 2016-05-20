@@ -36,13 +36,14 @@
 
         $(document).ready(function(){
             // 인스턴스 생성
-            var gallery1 = new SimpleGallery();
+            var gallery1 = new SimpleGalleryChild();
             gallery1.init("#container1 img");
-
             $("#btnStart").click(function(){
                 // 이미지 정렬
-                gallery1.show(3,150,150);
+                gallery1.showAni(3,150,150);
             });
+
+            
 
         });
 
@@ -79,6 +80,35 @@
                     left:x,
                     top:y
                 });
+            }
+        }
+
+        function SimpleGalleryChild() {
+
+        }
+
+        SimpleGalleryChild.prototype = new SimpleGallery();
+
+        // 이미지 출력 메서드 추가
+        SimpleGalleryChild.prototype.showAni=function(count, imageWidth, imageHeight){
+            // 이미지 개수 구하기.
+            var length = this.$images.length;
+
+            // 이미지 배열하기.
+            for(var i=0;i<length;i++){
+                // n번째 이미지 구하기
+                var $img = this.$images.eq(i);
+
+
+                // 위치 값 구하기
+                var x = 100+((i%count)*imageWidth);
+                var y = 100+(parseInt(i/count)*imageHeight);
+
+                // 위치 설정
+                $img.animate({
+                    left:x,
+                    top:y
+                }, 1000);
             }
         }
     </script>

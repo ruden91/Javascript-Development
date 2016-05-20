@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title> </title>
+
+    <style>
+        body {
+            font-size:9pt;
+        }
+        div.image-container{
+            position: relative;
+            border:1px solid #000;
+            height:600px;
+        }
+
+        div.image-container img{
+            position: absolute;
+            left:0;
+            top:0;
+            width:120px;
+        }
+    </style>
+ 
+        
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+    /*
+     미션: 클래스 상속을 활용한 기능 확장
+     기존 심플 갤러리의 경우 배열 버튼을 누르면 아무런 효과 없이 즉시 이미지가 자신의 위치로 이동하는 것을 확인할 수 있습니다.
+     기존 심플 갤러리를 확장해 이미지가 부드럽게 이동할 수 있게 만들어 주세요.
+     단, 여기서 주의해야 할 사항이 하나 있는데요.
+     절대 기존 심플 갤러리 클래스(Simple Gallery)를 수정하면 안 됩니다.
+
+     */      
+
+        $(document).ready(function(){
+            // 인스턴스 생성
+            var gallery1 = new SimpleGallery();
+            gallery1.init("#container1 img");
+
+            $("#btnStart").click(function(){
+                // 이미지 정렬
+                gallery1.show(3,150,150);
+            });
+
+        });
+
+
+        function SimpleGallery(){
+            // 프로퍼티 생성
+            this.$images = null;
+
+        }
+
+        // 요소 초기화
+        SimpleGallery.prototype.init=function(selector){
+            this.$images = $(selector);
+        }
+
+
+        // 이미지 출력 메서드 추가
+        SimpleGallery.prototype.show=function(count, imageWidth, imageHeight){
+            // 이미지 개수 구하기.
+            var length = this.$images.length;
+
+            // 이미지 배열하기.
+            for(var i=0;i<length;i++){
+                // n번째 이미지 구하기
+                var $img = this.$images.eq(i);
+
+
+                // 위치 값 구하기
+                var x = 100+((i%count)*imageWidth);
+                var y = 100+(parseInt(i/count)*imageHeight);
+
+                // 위치 설정
+                $img.css({
+                    left:x,
+                    top:y
+                });
+            }
+        }
+    </script>
+</head>
+    
+<body>
+    <button id="btnStart">이미지 정렬하기</button>
+    <div class="image-container" id="container1">
+        <img src="banners/1.png" >
+        <img src="banners/2.png" >
+        <img src="banners/3.png" >
+        <img src="banners/4.png" >
+        <img src="banners/5.png" >
+        <img src="banners/6.png" >
+        <img src="banners/7.png" >
+        <img src="banners/8.png" >   
+    </div>
+     
+</body>
+</html>

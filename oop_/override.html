@@ -13,29 +13,18 @@
 
 		 */
 		// 부모 클래스
-		function MyParent(){
-			this.property1= "data1";
-			console.log("MyParent()")
+		function sum() {
+			var result = 0;
+			for(var i = 0 ; i < arguments.length; i++) {
+				result += arguments[i];
+			}
+			return result;
+
 		}
 
-		MyParent.prototype.method1=function(){
-			console.log("property1 = "+this.property1);
-		}
-
-		// 자식 클래스
-		function MyChild(){
-			console.log("MyChild()");
-		}
-
-		// 부모 클래스 상속
-		MyChild.prototype = new MyParent();
-		// 생성자 설정
-		MyChild.prototype.constructor= MyChild;
-
-		// 자식 인스턴스 생성
-		var child1 = new MyChild();
-		// 메서드 호출
-		child1.method1();
+		console.log(sum(10,20));
+		console.log(sum(10,20,30));
+		console.log(sum(10,20,30,40));
 
 
 

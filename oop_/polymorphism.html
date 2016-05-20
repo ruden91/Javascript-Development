@@ -51,10 +51,6 @@
 			$("#btnRandom").click(function() {
 				img1.show('random');
 			});
-
-			$("#btnGrid").click(function() {
-				img1.show('grid');
-			});
 		});
 
 		// 심플갤러리 클래스
@@ -133,22 +129,7 @@
 				})
 			}
 		}
-		//바둑판식 정렬 처리
-		SimpleGallery.prototype.alignGrid = function() {
-			var length = this.$images.length;
-			var count = 3;
 
-			for(var i = 0; i < length; i++) {
-				var x = (i % count) * 200;
-				var y = parseInt(i / count) * 200;
-
-				this.$images.eq(i).css({
-					left : x,
-					top : y
-				})
-
-			}
-		}
 	</script>
 </head>
 

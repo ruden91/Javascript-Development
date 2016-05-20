@@ -41,7 +41,11 @@
 
 			// 버튼 클릭 이벤트 실행.
 			$("#btnHorizontal").click(function() {
-				img1.show();
+				img1.show('horizontal');
+			});
+
+			$("#btnVertical").click(function() {
+				img1.show('vertical');
 			});
 		});
 
@@ -91,6 +95,20 @@
 				this.$images.eq(i).css({
 					left : x
 				});
+			}
+		}
+
+		SimpleGallery.prototype.alignVertical = function() {
+			//이미지 개수 구하기
+			var length = this.$images.length;
+			//이미지 배열하기
+			for (var i = 0; i < length; i++) {
+				var y = i * 200;
+
+				this.$images.eq(i).css({
+					left : 0,
+					top : y
+				})
 			}
 		}
 

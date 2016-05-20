@@ -20,7 +20,7 @@
 	</style>
 
 
-	<script type="text/javascript"  src="../../../libs/jquery-1.11.0.min.js"></script>
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 	<script>
 		/*
 
@@ -55,21 +55,45 @@
 		SimpleGallery.prototype.init=function(selector){
 			this.$images = $(selector);
 		}
+		//이미지를 정렬하는 기준 찾기 
+		SimpleGallery.prototype.show = function(type) {
+			switch(type) {
+				case "horizontal" :
+					this.alignHorizontal();
+					break;
 
-		// 이미지를 가로로 정렬
-		SimpleGallery.prototype.show=function(){
-			// 이미지 개수 구하기.
+				case 'vertical' :
+					this.alignVertical();
+					break;
+
+				case 'random' :
+					this.alignRandom();
+					break;
+
+				case 'grid' :
+					this.alignGrid();
+					break;
+
+				default:
+					this.alignHorizontal();
+				
+			}
+
+		}
+		//가로 정렬처리	
+		SimpleGallery.prototype.alignHorizontal = function() {
+			//이미지 개수 구하기
 			var length = this.$images.length;
-			// 이미지 배열하기.
-			for (var i = 0; i < length; i++) {
+			//이미지 배열하기
+			for(var i = 0; i < length; i++){
 				var x = i * 200;
 
 				this.$images.eq(i).css({
 					left : x
 				});
-
 			}
 		}
+
 	</script>
 </head>
 

@@ -47,6 +47,10 @@
 			$("#btnVertical").click(function() {
 				img1.show('vertical');
 			});
+
+			$("#btnRandom").click(function() {
+				img1.show('random');
+			});
 		});
 
 		// 심플갤러리 클래스
@@ -97,7 +101,7 @@
 				});
 			}
 		}
-
+		//세로 정렬처리
 		SimpleGallery.prototype.alignVertical = function() {
 			//이미지 개수 구하기
 			var length = this.$images.length;
@@ -107,6 +111,20 @@
 
 				this.$images.eq(i).css({
 					left : 0,
+					top : y
+				})
+			}
+		}
+
+		//랜덤 정렬 처리
+		SimpleGallery.prototype.alignRandom = function() {
+			var length = this.$images.length;
+
+			for(var i = 0; i < length; i++) {
+				var x = 400 * Math.random();
+				var y = 400 * Math.random();
+				this.$images.eq(i).css({
+					left : x,
 					top : y
 				})
 			}

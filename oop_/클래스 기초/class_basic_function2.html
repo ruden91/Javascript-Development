@@ -55,19 +55,17 @@
 		 */
 		// 탭메뉴 관련 변수
 		$(function() {
-			var tabMenu1 = new TabMenu();
-
-			tabMenu1.init();
-			tabMenu1.initEvent();
+			var tab1 = new TabMenu('#tabMenu1');
+			var tab1 = new TabMenu('#tabMenu2');
 		});
 
-		function TabMenu() {
+		function TabMenu(selector) {
 			this.$tabMenu = null;
 			this.$menuItems = null;
 			this.$selectMenuItem = null;
 
-			this.init = function() {
-				this.$tabMenu = $('#tabMenu1');
+			this.init = function(selector) {
+				this.$tabMenu = $(selector);
 				this.$menuItems = this.$tabMenu.find('li');
 			}
 
@@ -86,6 +84,10 @@
 				this.$selectMenuItem = $menuItem;
 				this.$selectMenuItem.addClass('select');
 			}
+
+			this.init(selector);
+			this.initEvent();
+
 		}
 
 
@@ -103,5 +105,14 @@
 			<li class="menuitem6">path</li>
 		</ul>
 
+		<p>두 번째 탭메뉴</p>
+		<ul class="tab-menu" id="tabMenu2">
+			<li class="menuitem1">google</li>
+			<li class="menuitem2">facebook</li>
+			<li class="menuitem3">pinterest</li>
+			<li class="menuitem4">twitter</li>
+			<li class="menuitem5">airbnb</li>
+			<li class="menuitem6">path</li>
+		</ul>
 	</body>
 </html>

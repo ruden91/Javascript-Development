@@ -56,10 +56,15 @@
 
 		$(document).ready(function(){
 			var tabmenu1 = new TabMenu();
+			var tabmenu2 = new TabMenu();
+			var tabmenu3 = new TabMenu();
 			// 탭메뉴 요소 초기화
-			tabmenu1.init();
-
+			tabmenu1.init('#tabMenu1');
+			tabmenu2.init('#tabMenu2');
+			tabmenu3.init('#tabMenu3');
 			tabmenu1.initEvent();
+			tabmenu2.initEvent();
+			tabmenu3.initEvent();
 			// 탭메뉴 요소에 이벤트 등록
 
 		});
@@ -70,8 +75,8 @@
 			this.$selectMenuItem = null;
 		}
 
-		TabMenu.prototype.init = function() {
-			this.$tabMenu = $("#tabMenu1");
+		TabMenu.prototype.init = function(selector) {
+			this.$tabMenu = $(selector);
 			this.$menuItems = this.$tabMenu.find("li");			
 		}
 
@@ -98,6 +103,26 @@
 	<body>
 		<p>첫 번째 탭메뉴</p>
 		<ul class="tab-menu" id="tabMenu1">
+			<li class="menuitem1">google</li>
+			<li class="menuitem2">facebook</li>
+			<li class="menuitem3">pinterest</li>
+			<li class="menuitem4">twitter</li>
+			<li class="menuitem5">airbnb</li>
+			<li class="menuitem6">path</li>
+		</ul>
+
+		<p>두 번째 탭메뉴</p>
+		<ul class="tab-menu" id="tabMenu2">
+			<li class="menuitem1">google</li>
+			<li class="menuitem2">facebook</li>
+			<li class="menuitem3">pinterest</li>
+			<li class="menuitem4">twitter</li>
+			<li class="menuitem5">airbnb</li>
+			<li class="menuitem6">path</li>
+		</ul>
+
+		<p>세 번째 탭메뉴</p>
+		<ul class="tab-menu" id="tabMenu3">
 			<li class="menuitem1">google</li>
 			<li class="menuitem2">facebook</li>
 			<li class="menuitem3">pinterest</li>

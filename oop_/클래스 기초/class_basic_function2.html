@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+
+	<style>
+		.tab-menu {
+			list-style: none;
+			height:80px;
+		}
+		.tab-menu li {
+			width:99px;
+			height:40px;
+			background-position-y:0;
+			text-indent: -1000px;
+			overflow: hidden;
+			display: inline-block;
+			float:left;
+		}
+		.tab-menu li:hover {
+			background-position-y: -40px;
+		}
+		.tab-menu li.select {
+			background-position-y: -80px;
+			height:80px;
+		}
+		.tab-menu li.menuitem1 {
+			background-image: url(images/newbtn.bar.1.png);
+		}
+		.tab-menu li.menuitem2 {
+			background-image: url(images/newbtn.bar.2.png);
+		}
+		.tab-menu li.menuitem3 {
+			background-image: url(images/newbtn.bar.3.png);
+		}
+		.tab-menu li.menuitem4 {
+			background-image: url(images/newbtn.bar.4.png);
+		}
+		.tab-menu li.menuitem5 {
+			background-image: url(images/newbtn.bar.5.png);
+		}
+		.tab-menu li.menuitem6 {
+			background-image: url(images/newbtn.bar.6.png);
+		}
+
+	</style>
+	 
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	<script>
+
+		/*
+		 예제02: 함수 단위 코딩으로 만들어진 탭메뉴를 함수 방식 클래스로 만들어 주세요.
+
+		 */
+		// 탭메뉴 관련 변수
+		$(function() {
+			var tabMenu1 = new TabMenu();
+
+			tabMenu1.init();
+			tabMenu1.initEvent();
+		});
+
+		function TabMenu() {
+			this.$tabMenu = null;
+			this.$menuItems = null;
+			this.$selectMenuItem = null;
+
+			this.init = function() {
+				this.$tabMenu = $('#tabMenu1');
+				this.$menuItems = this.$tabMenu.find('li');
+			}
+
+			this.initEvent = function() {
+				var objThis = this;
+				this.$menuItems.on('click', function() {
+					objThis.setSelectItem($(this));
+				});
+			}
+
+			this.setSelectItem = function($menuItem) {
+				if(this.$selectMenuItem){
+					this.$selectMenuItem.removeClass('select');
+				}
+
+				this.$selectMenuItem = $menuItem;
+				this.$selectMenuItem.addClass('select');
+			}
+		}
+
+
+	</script>
+</head>
+	
+	<body>
+		<p>첫 번째 탭메뉴</p>
+		<ul class="tab-menu" id="tabMenu1">
+			<li class="menuitem1">google</li>
+			<li class="menuitem2">facebook</li>
+			<li class="menuitem3">pinterest</li>
+			<li class="menuitem4">twitter</li>
+			<li class="menuitem5">airbnb</li>
+			<li class="menuitem6">path</li>
+		</ul>
+
+	</body>
+</html>

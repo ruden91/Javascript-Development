@@ -7,11 +7,19 @@
 
 	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 	<script>
-		function showInfo(userName, id, nickName, age, address) {
-			document.write(userName + '<br>' + id + '<br>' + nickName + '<br>' + age + '<br>' + address);
+		var userInfo = {
+			userName : '박경두',
+			id : 'ruden91',
+			age : 26,
+			address : '경기도 남양주시',
+			nickName : '대공포박병장'
 		}
 
-		showInfo('박경두', 'ruden91', '대공포박병장', 26, '경기도 남양주시')
+		showInfo(userInfo);
+
+		function showInfo(userInfo) {
+			document.write(userInfo.userName + '<br>' + userInfo.id + '<br>' + userInfo.age + '<br>' + userInfo.nickName + '<br>' + userInfo.address);
+		}
 	</script>
 </head>
 

@@ -4,15 +4,24 @@
 	<meta charset="UTF-8">
 	<title>class 기초</title>
 	<script>
-		var user = {
+		var userInfo1 = {
 			name : '박경두',
 			age : 26,
 			showInfo : function() {
-				document.write(this.name + "<br>", this.age);
+				alert(this.name + '|' + this.age);
 			}
 		}
 
-		user.showInfo();
+		var userInfo2 = {
+			name : '김수현',
+			age : 26,
+			showInfo : function() {
+				alert(this.name + '|' + this.age);
+			}
+		}
+
+		userInfo1.showInfo();
+		userInfo2.showInfo();
 	</script>
 </head>
 <body>

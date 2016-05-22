@@ -46,7 +46,7 @@
 
 	</style>
 
-	<script src="../../libs/jquery-1.11.0.min.js"></script>
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 	<script>
 
 		/*
@@ -60,78 +60,68 @@
 		 	- tabMenu1을 tabMenu2로 변경
 		 */
 
-		$(document).ready(function(){
-			tabMenu1.init();
-			tabMenu1.initEvent();
+		 $(function() {
+		 	tabMenu1.init();
+		 	tabMenu1.initEvent();
 
-			tabMenu2.init();
-			tabMenu2.initEvent();
-		});
+		 	tabMenu2.init();
+		 	tabMenu2.initEvent();
+		 });
 
-		var tabMenu1 = {
-			$tabMenu:null,
-			$menuItems:null,
-			$selectMenuItem:null,
+		 var tabMenu1 = {
+		 	$tabMenu : null,
+		 	$menuItems : null,
+		 	$selectMenuItem : null,
 
-			// 요소 초기화
-			init:function(){
-				this.$tabMenu = $("#tabMenu1");
-				this.$menuItems = this.$tabMenu.find("li");
-			},
+		 	init : function() {
+		 		this.$tabMenu = $('#tabMenu1');
+		 		this.$menuItems = this.$tabMenu.find('li');
+		 	},
 
-			// 이벤트 등록
-			initEvent:function(){
-				var objThis = this;
-				this.$menuItems.on("click",function(){
-					objThis.setSelectItem($(this));
-				});
-			},
+		 	initEvent : function() {
+		 		var objThis = this;
+		 		this.$menuItems.on('click', function() {
+		 			objThis.setSelectItem($(this));
+		 		});
+		 	},
 
-			// $menuItem에 해당하는 메뉴 아이템 선택하기
-			setSelectItem:function($menuItem){
-				// 기존 선택메뉴 아이템을 비활성화 처리 하기
-				if(this.$selectMenuItem){
-					this.$selectMenuItem.removeClass("select");
-				}
+		 	setSelectItem : function($menuItem) {
+		 		if(this.$selectMenuItem) {
+		 			this.$selectMenuItem.removeClass('select');
+		 		}
 
-				// 신규 아이템 활성화 처리 하기
-				this.$selectMenuItem = $menuItem;
-				this.$selectMenuItem.addClass("select");
-			}
-		}
+		 		this.$selectMenuItem = $menuItem;
+		 		this.$selectMenuItem.addClass('select');
+		 	}
+		 }
 
+		 var tabMenu2 = {
+		 	$tabMenu : null,
+		 	$menuItems : null,
+		 	$selectMenuItem : null,
 
-		var tabMenu2 = {
-			$tabMenu:null,
-			$menuItems:null,
-			$selectMenuItem:null,
+		 	init : function() {
+		 		this.$tabMenu = $('#tabMenu2');
+		 		this.$menuItems = this.$tabMenu.find('li');
+		 	},
 
-			// 요소 초기화
-			init:function(){
-				this.$tabMenu = $("#tabMenu2");
-				this.$menuItems = this.$tabMenu.find("li");
-			},
+		 	initEvent : function() {
+		 		var objThis = this;
+		 		this.$menuItems.on('click', function() {
+		 			objThis.setSelectItem($(this));
+		 		});
+		 	},
 
-			// 이벤트 등록
-			initEvent:function(){
-				var objThis = this;
-				this.$menuItems.on("click",function(){
-					objThis.setSelectItem($(this));
-				});
-			},
+		 	setSelectItem : function($menuItem) {
+		 		if(this.$selectMenuItem) {
+		 			this.$selectMenuItem.removeClass('select');
+		 		}
 
-			// $menuItem에 해당하는 메뉴 아이템 선택하기
-			setSelectItem:function($menuItem){
-				// 기존 선택메뉴 아이템을 비활성화 처리 하기
-				if(this.$selectMenuItem){
-					this.$selectMenuItem.removeClass("select");
-				}
+		 		this.$selectMenuItem = $menuItem;
+		 		this.$selectMenuItem.addClass('select');
+		 	}
+		 }
 
-				// 신규 아이템 활성화 처리 하기
-				this.$selectMenuItem = $menuItem;
-				this.$selectMenuItem.addClass("select");
-			}
-		}
 
 	</script>
 </head>

@@ -9,16 +9,20 @@
 	<script>
 		var userInfo = {
 			userName : '박경두',
-			id : 'ruden91',
-			age : 26,
+			id : 'ruden91'
+		}
+
+		var defaults = {
+			age : 0,
 			address : '경기도 남양주시',
-			nickName : '대공포박병장'
+			nickName : ""
 		}
 
 		showInfo(userInfo);
 
 		function showInfo(userInfo) {
-			document.write(userInfo.userName + '<br>' + userInfo.id + '<br>' + userInfo.age + '<br>' + userInfo.nickName + '<br>' + userInfo.address);
+			userInfo = $.extend({}, defaults, userInfo);
+			document.write(userInfo.userName + "<br>" + userInfo.id + "<br>" + userInfo.nickName + "<br>" + userInfo.age + "<br>" + userInfo.address)
 		}
 	</script>
 </head>

@@ -55,24 +55,20 @@
 		 */
 
 		$(document).ready(function(){
-			var tabmenu1 = new TabMenu();
-			var tabmenu2 = new TabMenu();
-			var tabmenu3 = new TabMenu();
-			// 탭메뉴 요소 초기화
-			tabmenu1.init('#tabMenu1');
-			tabmenu2.init('#tabMenu2');
-			tabmenu3.init('#tabMenu3');
-			tabmenu1.initEvent();
-			tabmenu2.initEvent();
-			tabmenu3.initEvent();
+			var tabmenu1 = new TabMenu('#tabMenu1');
+			var tabmenu2 = new TabMenu('#tabMenu2');
+			var tabmenu3 = new TabMenu('#tabMenu3');
 			// 탭메뉴 요소에 이벤트 등록
 
 		});
 
-		function TabMenu() {
+		function TabMenu(selector) {
 			this.$tabMenu = null;
 			this.$menuItems = null;
 			this.$selectMenuItem = null;
+
+			this.init(selector);
+			this.initEvent();
 		}
 
 		TabMenu.prototype.init = function(selector) {

@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD Xhtml 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title></title>
+	<style>
+	* {
+	    margin:0;
+	    padding:0;
+	}
+		body{
+			font-size:9pt;
+		
+		}
+	   
+#parent1 {
+    position:absolute;
+    width:300px;
+    height:300px;
+    left:100px;
+    top:100px; 
+    background-color: #ccc;
+}
+
+#parent2 {
+    margin:50px;
+    background-color: #ff0;
+    width:200px;
+    height:200px;
+}
+
+
+#child {
+    position:absolute;
+    width:100px;
+    height:100px;
+    left:50px;
+    top:100px;
+    background-color:#f00;
+}
+		
+		
+	</style>
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+<script>
+    /*
+     예제: #child의 좌표 기준이 되는 부모 좌표 노드의 id 값을 출력해 주세요.
+     */
+    $(function() {
+        var $parent = $('#child').offsetParent();
+
+        console.log($parent.attr('id'));
+    }) 
+</script>
+
+</head>
+
+<body>	
+<div id="parent1">
+    parent1
+    <div id="parent2">
+        parent2
+        <div id="child">
+            child
+        </div> 
+    </div>
+</div>     
+</body>
+</html>

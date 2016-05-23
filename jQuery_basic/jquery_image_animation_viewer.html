@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD Xhtml 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title></title>
+        <style>
+            body {
+                font-size: 9pt;
+            }
+            .panel {
+                width: 840px;
+                height: 415px;
+                border: 1px solid #ccc;
+            }
+
+            .nav {
+                width: 840px;
+                text-align: center;
+            }
+        </style>
+
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <script>
+            /*
+             미션01: 간단한 이미지 애니메이션 뷰어 만들기
+
+             01. 미션소개 및 미리보기
+                step07.html 파일 열기
+
+             02. 요구사항
+                 애니메이션에 사용되는 이미지는 총 60장입니다.
+                 1. play버튼을 누르면 애니메이션 될 수 있게 0.1초 마다 이미지를 순차적으로 한 장씩 변경해주세요.
+                 2. stop버튼을 누르면 애니메이션 기능을 멈춰 주세요.
+                 3. prev 버튼을 누르면 이전 이미지를 보여주세요.
+                 4. next 버튼을 누르면 다음 이미지를 보여주세요.
+
+             03. 구현순서
+                 단계01 – 전역 요소 초기화
+                 단계02 – 이벤트 초기화
+                 단계03 – 다음 이미지 출력
+                 단계04 – 이전 이미지 출력
+                 단계05 – 리팩토링
+                 단계06 – 오토 플레이 구현
+                 단계07 – 오토 플레이 멈추기
+
+             */
+             var $view = null;
+             $(function() {
+                init();
+             })
+
+             function init() {
+                $view = $('#view');
+             }
+
+        </script>
+    </head>
+
+    <body>
+        <div class="panel">
+            <img src="./images/1.jpg" id="view">
+        </div>
+        <div class="nav">
+            <button id="play">
+                play
+            </button>
+            <button id="stop">
+                stop
+            </button>
+            <button id="prev">
+                prev
+            </button>
+            <button id="next">
+                next
+            </button>
+        </div>
+    </body>
+
+</html>

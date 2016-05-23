@@ -45,14 +45,67 @@
 
              */
              var $view = null;
+             var currentIndex = 1;
+
              $(function() {
                 init();
+
+                initEvent();
              })
 
              function init() {
                 $view = $('#view');
              }
 
+             function initEvent() {
+                $('#play').click(function() {
+                    startAutoPlay();
+                })
+
+                $('#stop').click(function() {
+                    stopAutoPlay();
+                })
+
+                $('#next').click(function() {
+                    nextImage();
+                })
+
+                $('#prev').click(function() {
+                    prevImage();
+                })
+             }
+
+             function startAutoPlay() {
+                console.log('startAutoPlay');
+             }
+
+             function stopAutoPlay() {
+                console.log('stopAutoPlay');
+             }
+
+             function nextImage() {
+                var index = currentIndex + 1;
+                if(index >= 60) {
+                    index = 1;
+                }
+
+                showImage(index);
+             }
+
+             function prevImage() {
+                var index = currentIndex - 1;
+                if(index <= 0) {
+                    index = 59;
+                }
+
+                showImage(index);
+             }
+
+             function showImage(index) {
+                currentIndex = index;
+
+                $view.attr('src', './images/' + currentIndex + '.jpg');
+             }
         </script>
     </head>
 

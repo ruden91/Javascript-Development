@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD Xhtml 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title></title>
+        <style>
+            body {
+                font-size: 11pt;
+            }
+
+            .header {
+                text-align: center;
+            }
+
+        </style>
+
+        <script src="lib/jQuery/jquery-2.2.3.min.js"></script>
+        <script>
+            /*
+
+             예제01: 다음 문서에서 <img>태그의 src 속성 값과 <a> 태그의 href속성 값을 출력해주세요.
+
+             */
+             $(function() {
+                console.log($('.header img').attr('src'));
+                console.log($('.header a').attr('href'));
+             })
+        </script>
+
+    </head>
+
+    <body>
+        <div class="header">
+            <img src="wdn_logo.png" >
+            <br>
+            <a href="http://www.webdongne.com">웹동네</a>
+        </div>
+    </body>
+
+</html>

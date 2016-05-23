@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD Xhtml 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title> </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-size: 9pt;
+        }
+
+        #btnAlign {
+            position: absolute;
+            left: 100px;
+            top: 50px;
+            width: 100px;
+            height: 30px;
+        }
+        #parent1 {
+            border: 1px solid #000;
+            position: absolute;
+            width: 500px;
+            height: 400px;
+            left: 100px;
+            top: 100px;
+        }
+
+        .fish {
+            position: absolute;
+            width: 120px;
+        }
+        .fish p {
+            position: absolute;
+            margin-top: 20px;
+            text-align: center;
+            width: 100%;
+        }
+        #fish1 {
+            left: 50px;
+            top: 100px;
+        }
+        #fish2 {
+            left: 150px;
+            top: 200px;
+        }
+        #fish3 {
+            left: 180px;
+            top: 50px;
+        }
+        #fish4 {
+            left: 350px;
+            top: 200px;
+        }
+        #fish5 {
+            left: 50px;
+            top: 300px;
+        }
+
+    </style>
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+<script>
+    /*
+     예제04: 정렬 버튼을 누르면 이미지를 다음 실행화면처럼 정렬되게 만들어 주세요.
+     단, 이미지 시작 위치는 left:50, top:50입니다.
+     */
+    $(document).ready(function() {
+        $("#btnAlign").click(function(e) {
+            // 여기에 풀이를 입력해주세요.
+           
+        });
+        
+    })
+</script>
+
+</head>
+
+<body>
+    <button id="btnAlign">
+        정렬
+    </button>
+    <div id="parent1">
+        <div  id="fish1" class="fish">
+            <p>
+                1
+            </p><img src="fish.png">
+        </div>
+
+        <div  id="fish2" class="fish">
+            <p>
+                2
+            </p>
+            <img src="fish.png">
+        </div>
+
+        <div  id="fish3" class="fish">
+            <p>
+                3
+            </p>
+            <img src="fish.png">
+        </div>
+
+        <div  id="fish4" class="fish">
+            <p>
+                4
+            </p>
+            <img src="fish.png">
+        </div>
+
+        <div  id="fish5" class="fish">
+            <p>
+                5
+            </p>
+            <img src="fish.png">
+        </div>
+
+    </div>
+</body>
+</html>

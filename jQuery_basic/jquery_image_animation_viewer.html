@@ -46,6 +46,7 @@
              */
              var $view = null;
              var currentIndex = 1;
+             var timerID = 0;
 
              $(function() {
                 init();
@@ -76,11 +77,18 @@
              }
 
              function startAutoPlay() {
-                console.log('startAutoPlay');
+                if(timerID == 0) {
+                    timerID = setInterval(function() {
+                        nextImage();
+                    }, 100);
+                }                
              }
 
              function stopAutoPlay() {
-                console.log('stopAutoPlay');
+                if(timerID != 0) {
+                    clearInterval(timerID);
+                    timerID = 0;
+                }
              }
 
              function nextImage() {

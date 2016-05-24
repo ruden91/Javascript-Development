@@ -10,6 +10,10 @@
             $('#btn1').click(function() {
                 alert('안녕하세요.');
             })
+
+            $('#btn2').click(function() {
+                $('#btn1').off();
+            })
         })
     </script>
 
@@ -17,5 +21,6 @@
 
 <body>  
     <button id="btn1">인사</button>
+    <button id="btn2">제거</button>
 </body>
 </html>

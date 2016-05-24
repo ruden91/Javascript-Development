@@ -7,12 +7,8 @@
 
     <script>
         $(function() {
-            $('#btn1').click(function() {
-                alert('안녕하세요.');
-            })
-
-            $('#btn2').click(function() {
-                $('#btn1').off();
+            $(btn1).one('click',function() {
+                alert('안녕하세요');
             })
         })
     </script>
@@ -21,6 +17,5 @@
 
 <body>  
     <button id="btn1">인사</button>
-    <button id="btn2">제거</button>
 </body>
 </html>

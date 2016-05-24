@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD Xhtml 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+    <style>
+        body{
+            font-size:9pt;
+        
+        }
+        div {
+            margin:100px;
+            border:1px solid #f00;
+            min-height: 50px;
+            cursor:pointer;
+        }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+    <script>
+
+        var count=0;
+        $(document).ready(function(){
+            // 캡쳐 단계에 이벤트 등록
+            document.addEventListener("click",function(e){
+                count++;
+                console.log("1. doument phase="+e.eventPhase, "count="+count);
+
+            },true);
+
+
+            // 캡쳐 단계에 이벤트 등록
+            document.body.addEventListener("click",function(e){
+                count++;
+                console.log("2. body phase="+e.eventPhase, "count="+count);
+                e.stopPropagation();
+            },true);
+
+
+            // 캡쳐 단계에 이벤트 등록
+            $("#a").get(0).addEventListener("click", function(e){
+                count++;
+                console.log("3. A phase="+e.eventPhase, "count="+count);
+                e.stopPropagation();
+            },true);
+
+
+            // 캡쳐/버블 단계에 이벤트 등록
+            $(document).on("click",function(e){
+                count++;
+                console.log("4. doument phase="+e.eventPhase, "count="+count);
+
+            });
+
+
+
+            // 캡쳐 단계에 이벤트 등록
+             $("body").on("click",function(e){
+                count++;
+                console.log("5. body phase="+e.eventPhase, "count="+count);
+            });
+
+
+
+             // 타겟/버블링 단계에 이벤트 등록
+            $("#a").on("click", function(e){
+                count++;
+                console.log("6. A phase="+e.eventPhase, "count="+count);
+
+            });
+
+            //  타겟/버블링 단계에 이벤트 등록
+            $("#b").on("click", function(e){
+                count++;
+                console.log("7. B phase="+e.eventPhase, "count="+count);
+
+            });
+        })
+
+    </script>
+
+</head>
+
+<body>  
+    <div id="a">
+        a
+        <div id="b">
+            b
+            <div id="c">
+                c
+            </div>
+        </div>      
+    </div> 
+</body>
+</html>

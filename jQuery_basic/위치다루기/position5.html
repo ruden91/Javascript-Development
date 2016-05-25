@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD Xhtml 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title> </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-size: 9pt;
+        }
+        #info {
+            border: 1px solid #000;
+            height: 120px;
+            margin: 50px 0 0 100px;
+            width: 500px;
+        }
+        #parent1 {
+            border: 1px solid #000;
+            position: absolute;
+            width: 500px;
+            height: 400px;
+            left: 100px;
+            top: 200px;
+        }
+
+        #fish {
+            position: absolute;
+            padding: 30px;
+            margin: 50px;
+            left: 50px;
+            top: 100px;
+            border: 20px solid #f00;
+        }
+
+    </style>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+        /*
+         예제07:
+         실행화면처럼 물고기($fish)의 기본크기, 기본크기+padding 영역 크기,
+         기본크기+padding+border 영역 크기, 기본크기+padding+border+margin 영역 크기
+         그리고 지역 위치와 전역 위치를 각각 출력해 주세요.
+
+         */
+        window.onload = function() {
+            // #info 찾기
+            var $info = $("#info");
+            // #fish 찾기
+            var $fish = $("#fish");
+            
+            var str = '기본크기 :' + $fish.width() + '<br>' + $fish.height() +'<br>';
+
+            str += '기본크기 :' + $fish.innerWidth() + '<br>' + $fish.innerHeight() +'<br>';
+            str += '기본크기 :' + $fish.outerWidth() + '<br>' + $fish.outerHeight() +'<br>';
+            str += '기본크기 :' + $fish.outerWidth(true) + '<br>' + $fish.outerHeight(true) +'<br>';
+
+            //지역 좌표 위치 값 구하기
+
+            var localPos = $fish.position();
+            str += '지역 좌표 left = ' + localPos.left + ', top = ' + localPos.top + '<br>';
+            var globalPos = $fish.offset();
+            str += '전역 좌표 left = ' + globalPos.left + ', top = ' + globalPos.top;
+
+            $info.html($info.html() + str);
+         
+        };
+    </script>
+
+</head>
+
+<body>
+
+    <div id="info">
+        (paddin=30px, border=20px, margin=50px)
+        <br>
+    </div>
+    <div id="parent1">
+        <img src="fish.png" id="fish">
+    </div>
+</body>
+</html>

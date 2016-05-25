@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD Xhtml 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title></title>
+	<style>
+        * {
+            margin:0;
+            padding:0;
+        }
+		body{
+			font-size:9pt;
+		
+		}
+        #info {
+            border:1px solid #000;
+            height:30px;
+            margin:50px 0 0 100px;
+            width:500px;
+        }
+        #parent1 {
+            border:1px solid #000;
+            position:absolute;
+            width:500px;
+            height:400px;
+            left:100px;
+            top:100px;
+
+        }
+
+        #fish {
+            position:absolute;
+
+            left:50px;
+            top:100px;
+        }
+	</style>
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+    <script>
+        /*
+         예제06:  클릭한 위치로 물고기를 이동시켜 주세요. 단, 이동 시 전역 좌표를 이용해 주세요.
+         */
+         $(function() {
+            var $info = $('#info');
+            var $fish = $('#fish');
+            $('#parent1').click(function(e) {
+                var left = e.pageX;
+                var top = e.pageY;
+
+                $fish.offset({
+                    left : left,
+                    top : top
+                })
+            })
+         })
+    </script>
+
+</head>
+
+<body>
+    <div id="parent1">
+        <img src="fish.png" id="fish">
+    </div>
+</body>
+
+</html>

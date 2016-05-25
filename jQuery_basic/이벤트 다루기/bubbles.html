@@ -22,8 +22,12 @@
 
      */
         $(function() {
-            $('ul.menu li').on('click', function() {
-                alert($(this).html());
+            $('ul').on('click', function(e) {
+                console.log(e.target.tagName);
+
+                if(e.target.tagName == 'li'){
+                    alert($(e.target).html());
+                }
             })
         })
     </script>

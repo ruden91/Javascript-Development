@@ -22,12 +22,8 @@
 
      */
         $(function() {
-            $('ul').on('click', function(e) {
-                console.log(e.target.tagName);
-
-                if(e.target.tagName == 'li'){
-                    alert($(e.target).html());
-                }
+            $('ul').on('click', 'li', function(e) {
+                alert($(e.target).html());
             })
         })
     </script>

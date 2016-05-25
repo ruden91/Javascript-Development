@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD Xhtml 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title></title>
+	<style>
+		body{
+			font-size:9pt;
+		
+		}
+	
+	</style>
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    
+    <script>
+    /*
+
+
+     예제08: 먼저 다음에 등장하는 풀이전 코드는 '핵심01-일반 이벤트 등록, 예제2'에서
+     다룬 예제로서 클릭한 메뉴 항목을 출력하는 예제입니다.
+
+     */
+        $(function() {
+            $('ul.menu li').on('click', function() {
+                alert($(this).html());
+            })
+        })
+    </script>
+
+</head>
+
+<body>
+    <ul class="menu">
+        <li>menu1</li>
+        <li>menu2</li>
+        <li>menu3</li>
+        <li>menu4</li>
+    </ul>        
+</body>
+
+</html>

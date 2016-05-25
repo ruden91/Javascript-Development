@@ -68,13 +68,22 @@
      예제04: 정렬 버튼을 누르면 이미지를 다음 실행화면처럼 정렬되게 만들어 주세요.
      단, 이미지 시작 위치는 left:50, top:50입니다.
      */
-    $(document).ready(function() {
-        $("#btnAlign").click(function(e) {
-            // 여기에 풀이를 입력해주세요.
-           
-        });
-        
-    })
+        $(function() {
+            $('#btnAlign').click(function(e) {
+                var startX = 50;
+                var startY = 50;
+
+                $('.fish').each(function(index) {
+                    $(this).css({
+                        left : startX,
+                        top : startY
+                    });
+
+                    startX += 50;
+                    startY += 50;
+                })
+            })
+        })
 </script>
 
 </head>

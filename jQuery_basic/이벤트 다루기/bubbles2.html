@@ -21,49 +21,25 @@
      방법1-메뉴 항목 추가와 동시에 이벤트 등록
     
      */
-
-        $(document).ready(function(){
-            // 신규 메뉴 항목 추가
-            var $menu = $("ul.menu");
-            // 카운트 변수 추가
-            var count=0;
-
-            // #add 버튼에 클릭 이벤트 등록
-            $("#add").click(function(){
-                // 카운트 증가
-                count++;
-                // 신규 메뉴 항목 생성
-                var $newItem = $("<li>new"+count+"</li>");
-                //이벤트 등록
-                $newItem.on("click",function(){
-                    // 클릭한 메뉴의 정보 출력
-                    alert($(this).html())
-                });
-                // 메뉴 항목 추가
-                $menu.append($newItem);
+        $(function() {
+            $('#btnA').on('click', function() {
+                $('#btnB').trigger('click');
             })
-            
-            // 선택한 메뉴 항목 출력
-            $("ul li").on("click",function(){
-                // 클릭한 메뉴의 정보 출력
-                alert($(this).html())
+
+            $('#btnB').on('click', function() {
+                console.log('B번입니다.');
             })
-        });
+        })
+
+
     </script>
    
 
 </head>
 
 <body>
-    <div>
-        <button id="add">추가</button>
-    </div>
-    <ul class="menu">
-        <li>menu1</li>
-        <li>menu2</li>
-        <li>menu3</li>
-        <li>menu4</li>
-    </ul>        
+    <button id="btnA">버튼A</button>
+    <button id="btnB">버튼B</button>    
 </body>
 </html>
 

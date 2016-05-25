@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD Xhtml 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title> </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-size: 9pt;
+        }
+
+        #parent1 {
+            border: 1px solid #000;
+            position: absolute;
+            width: 500px;
+            height: 400px;
+            left: 50px;
+            top: 50px;
+        }
+
+        #fish {
+            position: absolute;
+            padding: 30px;
+            margin: 50px;
+            left: 50px;
+            top: 100px;
+            border: 20px solid #f00;
+            width: 120px;
+            height: 70px;
+        }
+
+        #move {
+            position: absolute;
+            left: 50px;
+            top: 30px;
+        }
+
+    </style>
+
+   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+    <script>
+        /*
+         예제08:
+         이동(#move) 버튼을 누르면 다음 실행화면처럼 물고기(#fish)를 패널(#parent1)의 오른쪽에 정렬해 주세요.
+         단, 지역 좌표를 이용해 움직여 주세요.
+
+         */
+        $(document).ready(function() {
+            // #fish 찾기
+            var $fish = $("#fish");
+            
+            $('#move').click(function(e) {
+                var endX = $('#parent1').innerWidth() - $fish.outerWidth() - parseInt($fish.css('margin-right'));
+                $fish.css('left', endX);
+            })
+           
+        })
+    </script>
+</head>
+
+<body>
+    <button id="move">
+        이동
+    </button>
+    <div id="parent1">
+        <img src="fish.png" id="fish">
+    </div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD Xhtml 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+    <style>
+        body{
+            font-size:9pt;
+        
+        }
+    
+    </style>
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    
+    <script>
+    /*
+     예제09:
+     다음 예제는 동적으로 메뉴 항목을 추가하고 메뉴 항목 클릭 시 클릭한 메뉴 항목을 알려주는 예제입니다.
+
+     방법1-메뉴 항목 추가와 동시에 이벤트 등록
+    
+     */
+
+        $(document).ready(function(){
+            // 신규 메뉴 항목 추가
+            var $menu = $("ul.menu");
+            // 카운트 변수 추가
+            var count=0;
+
+            // #add 버튼에 클릭 이벤트 등록
+            $("#add").click(function(){
+                // 카운트 증가
+                count++;
+                // 신규 메뉴 항목 생성
+                var $newItem = $("<li>new"+count+"</li>");
+                //이벤트 등록
+                $newItem.on("click",function(){
+                    // 클릭한 메뉴의 정보 출력
+                    alert($(this).html())
+                });
+                // 메뉴 항목 추가
+                $menu.append($newItem);
+            })
+            
+            // 선택한 메뉴 항목 출력
+            $("ul li").on("click",function(){
+                // 클릭한 메뉴의 정보 출력
+                alert($(this).html())
+            })
+        });
+    </script>
+   
+
+</head>
+
+<body>
+    <div>
+        <button id="add">추가</button>
+    </div>
+    <ul class="menu">
+        <li>menu1</li>
+        <li>menu2</li>
+        <li>menu3</li>
+        <li>menu4</li>
+    </ul>        
+</body>
+</html>
+
+</html>

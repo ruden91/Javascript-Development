@@ -1,4 +1,4 @@
-# Park-js_study
+# javascript & jQuery 학습과 응용
 javascript core에 대해서 학습한 후 jQuery를 학습하는 순으로 진행합니다.
 
 기본적인 javascript 변수 선언부터 javascript를 객체지향 프로그래밍적이게 활용하는 법까지 학습합니다.

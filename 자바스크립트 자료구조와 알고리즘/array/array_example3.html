@@ -42,12 +42,10 @@
 		var names2 = ['박경두', '김수현', '오오성', , '박경두', '리종휘', '홍상태'];
 		var answer2 = prompt('찾을 이름을 검색해 주세요.');
 		var name2 = answer2;
-		var position2 = names2.lastIndexOf(name2);
-		if(position2 >= 0) {
-			alert(name2 + '라는 값은 ' + 'index' + position2 +'에 위치해 있습니다.');
-		} else {
-			alert(name2 + '를 배열에서 찾을 수 없습니다.');
-		}
+		var position2 = names2.indexOf(name2);
+		var position3 = names2.lastIndexOf(name2);
+		alert('첫 번째 ' + name2 + '의 값은 index' + position2 +'에 위치합니다.');
+		alert('마지막 번째 ' + name2 + '의 값은 index' + position3 +'에 위치합니다.');
 	</script>
 </body>
 </html>

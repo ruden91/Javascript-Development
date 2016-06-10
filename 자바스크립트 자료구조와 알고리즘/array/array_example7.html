@@ -1,0 +1,99 @@
+<!--
+*
+*	자바스크립트 자료구조와 알고리즘
+*	제작자 : 박경두
+*	최종 수정일 : 2016-06-10
+*
+*
+*
+*
+-->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>ECMAScript</title>
+</head>
+<body>
+	
+	<script>
+		//반복자 함수
+		//배열에서 제공하는 마지막 함수로 반복자 함수를 소개합니다.
+		//반복자 함수는 배열의 각 요소에 함수를 적용한 다음 그 결과 값 또는 값의 집합 또는 새로운 배열을 반환한다.
+
+		//배열을 만들지 않는 반복자 함수
+		//반복자 함수 중에서도 배열을 만들지 않고 배열의 각 요소에 어떤 작업을 수행하거나 배열에 어떤 작업을 수행한 다음 한 개의 값을 생성하는 함수를 보자
+
+		//배열을 만들지 않는 반복자 함수로 forEach() 함수가 있다.
+		//forEach() 함수는 배열의 모든 요소에 인자로 받은 함수를 호출한다.
+		function square(num) {
+			console.log(num, num * num);
+		}
+
+		var nums = [1,2,3,4,5,6,7,8,9,10];
+		nums.forEach(square);
+
+		//every() 라는 반복자 함수도 있다.
+		//every() 함수는 불린 함수를 배열에 적용해 배열의 모든 요소가 참이면 true를 반환한다.
+		function isEven(num) {
+			return num % 2 == 0;
+		};
+
+		var nums = [2,4,6,8,10];
+		var even = nums.every(isEven);
+
+		if(even) {
+			console.log('all numbers are even');
+		} else {
+			console.log('not all numbers are even');
+		}
+
+		//some() 함수는 배열 요소 중에 한 요소라도 인자로 받은 불린 요소의 기준을 만족하면 true를 반환한다.
+
+		var someEven = nums.some(isEven);
+		if(someEven) {
+			console.log('some numbers are even');
+		} else {
+			console.log('no numbers are even');
+		}
+
+		nums = [1,3,5,7,9];
+		someEven = nums.some(isEven);
+		if(someEven) {
+			console.log('some numbers are even');
+		} else {
+			console.log('no numbers are even');
+		}
+
+		//reduce() 함수는 누적자 함수를 인자로 받은 다음 배열의 모든 요소를 누적자 함수에 적용한다.
+		
+		function add(runningTotal, currentValue) {
+			return runningTotal + currentValue;
+		}
+		var sum = nums.reduce(add);
+		console.log(sum);
+
+		// reduce() 함수는 add() 함수를 이용해 다음에서 보여주는 것처럼 왼쪽에서 오른쪽으로 배열의 합을 계산한다.
+		// add(1,2) -> 3
+		// add(3,3) -> 6
+		// add(6,4) -> 10
+		// add(10,5) -> 15
+		// .
+		// .
+		// .
+		// add(45,10) -> 55
+
+		//reduce() 함수를 이용해 문자열을 연결할 수 있다.
+		function concat(accumulatedString, item) {
+			return accumulatedString + item;
+		}
+
+		var words = ['t', 'o', 'm', 'a', 't', 'o'];
+		var sentence = words.reduce(concat);
+		console.log(sentence);
+
+		var sentence2 = words.reduceRight(concat);
+		console.log(sentence2);
+	</script>
+</body>
+</html>

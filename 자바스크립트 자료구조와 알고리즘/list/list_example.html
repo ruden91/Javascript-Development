@@ -1,0 +1,212 @@
+<!--
+*
+*	자바스크립트 자료구조와 알고리즘
+*	제작자 : 박경두
+*	최종 수정일 : 2016-06-11
+*
+*
+*
+*
+-->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>ECMAScript</title>
+</head>
+<body>
+	
+	<script>
+	//List 클래스 구현
+	//리스트 ADT를 이용해 List 클래스를 구현할 수 있다.
+	function List() {
+		this.listSize = 0;
+		this.pos = 0;
+		this.dataStore = [];
+		this.find = find;
+		this.toString = toString;
+		this.append = append;
+		this.remove = remove;
+		this.insert = insert;
+		this.clear = clear;
+		this.front = front;
+		this.end = end;
+		this.prev = prev;
+		this.next = next;
+		this.length = length;
+		this.currPos = currPos;
+		this.moveTo = moveTo;
+		this.getElement = getElement;
+		this.contains = contains;
+	}
+
+	//Append: 리스트에 요소 추가
+	//먼저 append() 함수를 구현한다.
+	//append() 함수는 리스트의 다음 가용 위치에 새 요소를 추가하는 함수다.
+	function append(element) {
+		this.dataStore[this.listSize++] = element; //요소를 추가한 다음 listSize를 1만큼 증가시킨다.
+	}
+
+	//Remove: 리스트의 요소 삭제
+	//이번에는 리스트의 요소를 삭제하는 방법을 다뤄본다.
+	//remove() 함수는 List 클래스의 함수 중 가장 구현하기 어려운 함수에 속한다.
+	//우선 리스트에서 삭제하려는 요소를 찾은 다음 요소를 삭제하고 나머지 배열 요소를 왼쪽으로 이동시켜 요소가 삭제된 자리를 메워야 한다.
+	//다행히 splice() 변형자 함수를 이용하면 이 과정을 쉽게 해결할 수 있다.
+	function find(element) {
+		for(var i = 0; i < this.dataStore.length; ++i){
+			if(this.dataStore[i] == element) {
+				return i;
+			}
+		}
+		return -1;
+	}
+
+	//Find: 리스트의 요소 검색
+	//find() 함수는 루프로 dataStore를 반복하면서 원하는 요소를 검색한다.
+	//요소를 발견하면 요소의 위치를 반환한다.
+	//요소를 발견하지 못하면 배열에서 요소를 찾지 못했을 때 반환하는 표준 값인 -1을 반환한다.
+	//remove() 함수는 find() 함수의 반환값으로 에러를 검사할 수 있다.
+	//remove() 함수는 find() 함수의 반환값을 splice() 함수에 넘겨주어 원하는 요소를 삭제한 다음 dataStore 배열을 연결한다.
+	//remove() 함수는 요소를 삭제했으면 true를 반환하고, 요소를 삭제하지 못했으면 false를 반환한다.
+
+	function remove(element) {
+		var foundAt = this.find(element);
+		if(foundAt > -1) {
+			this.dataStore.splice(foundAt,1);
+			--this.listSize;
+			return true;
+		}
+		return false;
+	}
+
+	//Length: 리스트의 요소 개수
+	//length() 함수는 리스트의 요소 수를 반환한다.
+	function length() {
+		return this.listSize;
+	}
+
+	//toString: 리스트의 요소 확인
+	// 리스트의 요소를 확인하는 함수를 만든다.
+	function toString() {
+		return this.dataStore;
+	}
+	//엄밀히 말해 toString() 함수는 문자열이 아닌 배열 객체를 반환한다.
+
+	//test
+	var names = new List();
+	names.append('박경두');
+	names.append('김수현');
+	names.append('오오성');
+	console.log(names.toString());
+	names.remove('김수현');
+	console.log(names.toString());
+
+	//Insert : 리스트에 요소 삽입
+	//이번에는 insert() 함수를 보자. 이전 예제에서 김수현을 삭제했다.
+	//이번엔 다시 원래 위치로 김수현을 돌려놓으려면 어떻게 해야 할까?
+	//요소를 삽입하려면 어디에 요소를 삽입할지 지시해야 한다.
+	//insert() 함수에서는 리스트의 기존 요소 뒤에 새로운 요소를 삽입하게 한다.
+
+	function insert(element, after) {
+		var insertPos = this.find(after);
+		if(insertPos > -1) {
+			this.dataStore.splice(insertPos+1, 0, element);
+			++this.listSize;
+			return true;
+		}
+		return false;
+	}
+	//insert() 함수는 헬퍼 함수 find(after)를 이용해 새 요소의 삽입 위치를 결정한다.
+	//요소를 삽입할 위치를 찾았으면 splice() 함수를 이용해 새 요소를 리스트에 추가한다.
+	//그리고 listSize를 1만큼 증가시키고 요소를 성공적으로 삽입했으므로 true를 반환한다.
+
+	//리스트의 모든 요소 삭제
+	function clear() {
+		delete this.dataStore;
+		this.dataStore.length = 0;
+		this.listSize = this.pos = 0;
+	}
+
+	//clear() 함수는 delete 명령어로 dataStore 배열을 삭제한 다음 빈 배열을 다시 만든다.
+	//마지막 행에서 listSize와 pos를 0 즉, 새 리스트의 시작 위치로 초기화한다.
+
+	//Contains:리스트에 특정값이 있는지 판단
+	//contains() 함수는 어떤 값이 리스트에 포함되어 있는지를 확인할 때 사용하는 함수다.
+
+	function contains(element) {
+		for(var i = 0; i < this.dataStore.length; ++i) {
+			if(this.dataStore[i] == element) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	//리스트 탐색
+	//리스트 탐색 관련 기능과 관련이 있으며 마지막 getElement() 함수는 리스트의 현재 요소를 출력한다.
+	function front() {
+		this.pos = 0;
+	}
+
+	function end() {
+		this.pos = this.listSize-1;
+	}
+
+	function prev() {
+		if(this.pos > 0){
+			--this.pos;
+		}
+	}
+
+	function next() {
+		if(this.pos < this.listSize-1) {
+			++this.pos;
+		}
+	}
+
+	function currPos() {
+		return this.pos;
+	}
+
+	function moveTo(position) {
+		this.pos = position;
+	}
+
+	function getElement() {
+		return this.dataStore[this.pos];
+	}
+
+	var names2 = new List();
+	names2.append('박경두');
+	names2.append('오오성');
+	names2.append('김수현');
+	names2.append('이종휘');
+	names2.append('이호진');
+	names2.append('홍상태');
+	names2.append('김동규');
+
+	names2.front();
+	console.log(names2.getElement()); //박경두 출력
+	names2.next();
+	console.log(names2.getElement()); //오오성 출력
+
+	//두 요소 뒤로 이동했다가 앞으로 한 요소 이동한 다음 현재 요소의 값을 출력한다.
+	names2.next();
+	names2.next();
+	names2.prev();
+	console.log(names2.getElement()); //김수현 출력
+
+	//리스트와 반복
+	//반복자를 이용하면 List 클래스의 내부 저장소를 직접 참조하지 않고 리스트를 탐색할 수 있다.
+	//List 클래스의 front() 함수, end() 함수, prev() 함수, next() 함수, currPos() 함수를 이용해 반복자를 구현할 수 있다.
+	//반복자는 배열의 인덱스에 비해 다음과 같은 장점이 있다.
+	//1.리스트 요소에 접근할 때 내부 데이터 저장소가 무엇인지 걱정할 필요가 없다.
+	//2.리스트에 새 요소를 추가했을 때 현재 인덱스가 쓸모 없는 값이 되는 반면 반복자를 이용하면 리스트가 바뀌어도 반복자를 갱신할 필요가 없다.
+	//3.List 클래스에 사용하는 데이터 저장소의 종류가 달라져도 이전과 같은 방식으로 요소에 접근할 수 있다.
+
+	for(names2.front(); names2.currPos() < names2.length(); names2.next()) {
+		console.log(names2.getElement());
+	}
+	</script>
+</body>
+</html>

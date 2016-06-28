@@ -8,6 +8,7 @@ jQuery는 javascript를 대신하는 언어가 아닌 javascript library일 뿐�
 그러므로 core javascript의 기반을 다지고 jQuery를 접근하시면 이해하기 편할 것입니다.
 
 jQuery로 만들 예제 목록
+- 롤링배너
 - 1단 네비게이션
 - 폴더 아코디언
 - 이미지 슬라이더

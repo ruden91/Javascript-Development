@@ -1,0 +1,124 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+
+    <style>
+        .rolling-banner {
+            position: relative;
+            top: 100px;
+            left: 100px;
+            width: 400px;
+            height: 200px;
+            /*  테스트를 위해 주석 처리*/
+            overflow:hidden;
+            border: 2px solid #000;
+        }
+
+        .rolling-banner img {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        #banner1 {
+            top: 250px;
+            left: 250px;
+        }
+    </style>
+
+    <script  type="text/javascript" src="../../libs/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            //인스턴스 생성
+            var rolling1 = new RollingBanner();
+        })
+
+        function RollingBanner() {
+
+            //프로퍼티 생성 및 초기화
+            this._$banners = null;
+            this._currentIndex = 0;
+            this._timerID = -1;
+
+            this._init();
+            this._initBannerPos();
+            this._startAutoPlay();
+        }
+
+        //요소 초기화
+        RollingBanner.prototype._init = function() {
+            this._$banners = $('#banner1 img');
+        }
+
+        //배너 위치 초기화
+        RollingBanner.prototype._initBannerPos = function() {
+
+            //배너 위치를 화면에서 보이지 않게 숨기기
+            this._$banners.css('top', 200);
+
+            //0번째 배너 활성화
+            this._$banners.eq(this._currentIndex).css('top', 0);
+        }
+
+        RollingBanner.prototype._startAutoPlay = function() {
+            var objThis = this;
+
+            //타이머가 두번 이상 실행되지 않게 조건 처리
+            if(this._timerID == -1) {
+                this._timerID = setInterval(function() {
+                    objThis.nextBanner();
+                }, 2000);
+            }
+        }
+
+        RollingBanner.prototype.nextBanner = function() {
+
+            //이전 배너 구하기
+            var $outBanner = this._$banners.eq(this._currentIndex);
+
+            //다음 배너 index값 구하기
+            this._currentIndex++;
+
+            //마지막 배너까지 롤링한 경우 다시 0번째부터 롤링될 수 있게 인덱스 값을 0으로 설정
+            if(this._currentIndex >= this._$banners.length) {
+                this._currentIndex = 0;
+            }
+
+            //다음 배너 구하기
+            var $inBanner = this._$banners.eq(this._currentIndex);
+
+            //다음 배너 위치 초기화
+            $inBanner.css({
+                top : 200,
+                opacity : 0
+            })
+
+            //현재 배너 사라지게 하기
+            $outBanner.stop().animate({
+                top : -200,
+                opacity : 0
+            }, 600);
+
+            //다음 배너 나타나게 하기
+            $inBanner.stop().animate({
+                top : 0,
+                opacity : 1
+            }, 600);
+        }
+
+    </script>
+</head>
+
+<body>
+    <div class="rolling-banner" id="banner1">
+        <img src="images/logo_01.jpg">
+        <img src="images/logo_02.jpg">
+        <img src="images/logo_03.jpg">
+        <img src="images/logo_04.jpg">
+        <img src="images/logo_05.jpg">
+        <img src="images/logo_06.jpg">
+    </div>
+</body>
+</html>
+

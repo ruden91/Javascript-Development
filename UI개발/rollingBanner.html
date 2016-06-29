@@ -6,10 +6,8 @@
     <style>
         .rolling-banner {
             position: relative;
-            top: 100px;
-            left: 100px;
-            width: 400px;
-            height: 200px;
+            width: 423px;
+            height: 296px;
             /*  테스트를 위해 주석 처리*/
             overflow:hidden;
             border: 2px solid #000;
@@ -22,20 +20,20 @@
         }
 
         #banner1 {
-            top: 250px;
-            left: 250px;
+            margin: 0 auto;
         }
     </style>
 
-    <script  type="text/javascript" src="../../libs/jquery-1.11.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script type="text/javascript">
+
+        //jQuery 시작점
         $(function() {
-            //인스턴스 생성
             var rolling1 = new RollingBanner();
         })
 
+        //RollingBanner 생성자 생성
         function RollingBanner() {
-
             //프로퍼티 생성 및 초기화
             this._$banners = null;
             this._currentIndex = 0;
@@ -55,10 +53,10 @@
         RollingBanner.prototype._initBannerPos = function() {
 
             //배너 위치를 화면에서 보이지 않게 숨기기
-            this._$banners.css('top', 200);
+            this._$banners.css('left', 423);
 
             //0번째 배너 활성화
-            this._$banners.eq(this._currentIndex).css('top', 0);
+            this._$banners.eq(this._currentIndex).css('left', 0);
         }
 
         RollingBanner.prototype._startAutoPlay = function() {
@@ -72,6 +70,7 @@
             }
         }
 
+        //다음 배너 활성화
         RollingBanner.prototype.nextBanner = function() {
 
             //이전 배너 구하기
@@ -90,34 +89,32 @@
 
             //다음 배너 위치 초기화
             $inBanner.css({
-                top : 200,
+                left : 423,
                 opacity : 0
             })
 
             //현재 배너 사라지게 하기
             $outBanner.stop().animate({
-                top : -200,
+                left : -423,
                 opacity : 0
             }, 600);
 
             //다음 배너 나타나게 하기
             $inBanner.stop().animate({
-                top : 0,
+                left : 0,
                 opacity : 1
-            }, 600);
+            }, 600)
         }
-
     </script>
 </head>
 
 <body>
     <div class="rolling-banner" id="banner1">
-        <img src="images/logo_01.jpg">
-        <img src="images/logo_02.jpg">
-        <img src="images/logo_03.jpg">
-        <img src="images/logo_04.jpg">
-        <img src="images/logo_05.jpg">
-        <img src="images/logo_06.jpg">
+        <img src="img/main1.PNG">
+        <img src="img/main2.PNG">
+        <img src="img/main3.PNG">
+        <img src="img/main4.PNG">
+
     </div>
 </body>
 </html>

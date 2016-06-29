@@ -9,6 +9,8 @@
 
 		//Dictionary 클래스를 정의
 		function Dictionary() {
+			this.count = count;
+			this.clear = clear;
 			this.add = add;
 			this.dataStore = new Array();
 			this.find = find;
@@ -43,10 +45,52 @@
 		   * 딕셔너리의 모든 키와 값 쌍을 보여주는 함수를 구현해본다.
 		   */
 		  function showAll() {
-		  	for(var item in this.dataStore) {
+		  	for (var item in Object.keys(this.dataStore).sort()) {
 		  		console.log(item + ' -> ' + this.dataStore[item]);
 		  	}
 		  }
+
+		  /* 딕셔너리에 몇 개의 항목이 저장되어 있는지 알 수 있으면 편리할 것이다.
+		   * count() 함수를 정의해보자
+		   * count() 함수에서 왜 length 프로퍼티를 사용하지 않는지 의아해하는 사람도 있을 것이다.
+		   * length 프로퍼티는 문자열 키에서는 제대로 동작하지 않는다.
+		   */
+		   function count() {
+			   	var n = 0;
+			   	for (var key in this.dataStore) {
+			   		++n;
+			   	}
+			   	return n;
+		   }
+
+		   // 모든 항목을 삭제하는 clear() 함수도 유용하다.
+		   function clear() {
+			   	for(var key in this.dataStore[key]) {
+			   		delete this.dataStore[key];
+			   	}
+		   }
+
+		   /* 키를 이용해 값을 얻는 것이 딕셔너리의 핵심 기능이다.
+		    * 딕셔너리에 저장된 항목의 순서는 중요하지 않다.
+		    * 하지만 딕셔너리의 항목을 정렬된 순서로 확인해야 할 때가 있다.
+		    */
+		    var pbook = new Dictionary();
+			pbook.add('김광유', '010-1234-1234');
+			pbook.add('박경두', '010-4759-5398');
+			pbook.add('정현주', '010-1235-1231');
+			pbook.add('허란','010-1455-5341');
+			pbook.add('김수현', '010-1234-1234');
+			pbook.add('오오성', '010-4759-5398');
+			pbook.add('강진주', '010-1235-1231');
+			pbook.add('김동규','010-1455-5341');		
+			pbook.add('장근명', '010-1234-1234');
+			pbook.add('이찬영', '010-4759-5398');
+			pbook.add('이종휘', '010-1235-1231');
+			pbook.add('조용환','010-1455-5341'); 
+			pbook.add('문수연', '010-1234-1234');
+			pbook.add('강동현', '010-4759-5398');
+			pbook.add('박인선', '010-1235-1231');
+			pbook.add('김주원','010-1455-5341');   
 	</script>
 </body>
 </html>

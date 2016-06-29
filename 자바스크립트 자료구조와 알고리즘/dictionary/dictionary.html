@@ -43,17 +43,10 @@
 		   * 딕셔너리의 모든 키와 값 쌍을 보여주는 함수를 구현해본다.
 		   */
 		  function showAll() {
-		  	for(var key in Object.keys(this.dataStore)) {
-		  		console.log(key + ' -> ' + this.dataStore[key]);
+		  	for(var item in this.dataStore) {
+		  		console.log(item + ' -> ' + this.dataStore[item]);
 		  	}
 		  }
-
-		  var pbook = new Dictionary();
-		  pbook.add('박경두', '010-4759-5398');
-		  pbook.add('김수현', '010-2332-4324');
-		  pbook.add('오오성', '010-1239-8291');
-
-		  //console.log('경두의 전화번호 : ' + pbook.find('박경두')); 값이 들어가고 찾기까지 확인
 	</script>
 </body>
 </html>

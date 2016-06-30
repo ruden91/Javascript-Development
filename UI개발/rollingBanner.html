@@ -4,23 +4,33 @@
     <title></title>
 
     <style>
-        .rolling-banner {
-            position: relative;
-            width: 423px;
-            height: 296px;
-            /*  테스트를 위해 주석 처리*/
+
+        .rolling-banner{
+            position:absolute;
             overflow:hidden;
-            border: 2px solid #000;
+            border:2px solid #000;
         }
 
-        .rolling-banner img {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .rolling-banner img{
+            position:absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
         }
 
         #banner1 {
-            margin: 0 auto;
+            top:250px;
+            left:50px;
+            width:400px;
+            height:200px;
+        }
+
+        #banner2 {
+            top:250px;
+            left:500px;
+            width:200px;
+            height:100px;
         }
     </style>
 
@@ -29,47 +39,61 @@
 
         //jQuery 시작점
         $(function() {
-            var rolling1 = new RollingBanner();
+            var rolling1 = new RollingBanner('#banner1');
+            var rolling2 = new RollingBanner('#banner2'); 
         })
 
         //RollingBanner 생성자 생성
-        function RollingBanner() {
+        function RollingBanner(selector) {
             //프로퍼티 생성 및 초기화
             this._$banners = null;
             this._currentIndex = 0;
             this._timerID = -1;
+            this._bannerHeight = 0;
 
-            this._init();
-            this._initBannerPos();
-            this._startAutoPlay();
+            this._init(selector);
+            this._initEvent();
         }
 
         //요소 초기화
-        RollingBanner.prototype._init = function() {
-            this._$banners = $('#banner1 img');
+        RollingBanner.prototype._init = function(selector) {
+            this._$banners = $(selector).children('img');
+        }
+
+        RollingBanner.prototype._initEvent = function() {
+            var that = this;
+
+            this._$banners.eq(0).on('load', function() {
+                that._bannerHeight = $(this).height();
+                that._start();
+            })
+        }
+
+        RollingBanner.prototype._start = function() {
+            this._initBannerPos();
+            this._startAutoPlay();
         }
 
         //배너 위치 초기화
         RollingBanner.prototype._initBannerPos = function() {
 
             //배너 위치를 화면에서 보이지 않게 숨기기
-            this._$banners.css('left', 423);
+            this._$banners.css('top', this._bannerHeight);
 
             //0번째 배너 활성화
-            this._$banners.eq(this._currentIndex).css('left', 0);
+            this._$banners.eq(this._currentIndex).css('top', 0);
         }
 
         RollingBanner.prototype._startAutoPlay = function() {
-            var objThis = this;
+            var that = this;
 
             //타이머가 두번 이상 실행되지 않게 조건 처리
             if(this._timerID == -1) {
                 this._timerID = setInterval(function() {
-                    objThis.nextBanner();
+                    that.nextBanner();
                 }, 2000);
             }
         }
-
         //다음 배너 활성화
         RollingBanner.prototype.nextBanner = function() {
 
@@ -89,19 +113,19 @@
 
             //다음 배너 위치 초기화
             $inBanner.css({
-                left : 423,
+                top : this._bannerHeight,
                 opacity : 0
             })
 
             //현재 배너 사라지게 하기
             $outBanner.stop().animate({
-                left : -423,
+                top : - this._bannerHeight,
                 opacity : 0
             }, 600);
 
             //다음 배너 나타나게 하기
             $inBanner.stop().animate({
-                left : 0,
+                top : 0,
                 opacity : 1
             }, 600)
         }
@@ -115,6 +139,15 @@
         <img src="img/main3.PNG">
         <img src="img/main4.PNG">
 
+    </div>
+
+    <div class="rolling-banner" id="banner2">        
+        <img src="img/logo_02.jpg">
+        <img src="img/logo_03.jpg">
+        <img src="img/logo_04.jpg">
+        <img src="img/logo_05.jpg">
+        <img src="img/logo_06.jpg">
+        <img src="img/logo_01.jpg">
     </div>
 </body>
 </html>

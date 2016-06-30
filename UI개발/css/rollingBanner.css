@@ -1,0 +1,41 @@
+        .rolling-banner{
+            position:absolute;
+            overflow:hidden;
+            border:2px solid #000;
+        }
+
+        .rolling-banner img{
+            position:absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+        }
+
+
+        #banner1 {
+            top:50px;
+            left:50px;
+            width:400px;
+            height:200px;
+        }
+
+        #banner2 {
+            top:50px;
+            left:500px;
+            width:400px;
+            height:200px;
+        }
+        #banner3 {
+            top:300px;
+            left:50px;
+            width:400px;
+            height:200px;
+        }
+
+        #banner4 {
+            top:300px;
+            left:500px;
+            width:400px;
+            height:200px;
+        }

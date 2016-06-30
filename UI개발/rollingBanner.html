@@ -39,17 +39,19 @@
 
         //jQuery 시작점
         $(function() {
-            var rolling1 = new RollingBanner('#banner1');
-            var rolling2 = new RollingBanner('#banner2'); 
+            var rolling1 = new RollingBanner('#banner1', 3000, 1000);
+            var rolling2 = new RollingBanner('#banner2', 1000, 300); 
         })
 
         //RollingBanner 생성자 생성
-        function RollingBanner(selector) {
+        function RollingBanner(selector, playSpeed, rollingSpeed) {
             //프로퍼티 생성 및 초기화
             this._$banners = null;
             this._currentIndex = 0;
             this._timerID = -1;
             this._bannerHeight = 0;
+            this._playSpeed = playSpeed;
+            this._rollingSpeed = rollingSpeed;
 
             this._init(selector);
             this._initEvent();
@@ -91,7 +93,7 @@
             if(this._timerID == -1) {
                 this._timerID = setInterval(function() {
                     that.nextBanner();
-                }, 2000);
+                }, this._playSpeed);
             }
         }
         //다음 배너 활성화
@@ -121,13 +123,13 @@
             $outBanner.stop().animate({
                 top : - this._bannerHeight,
                 opacity : 0
-            }, 600);
+            }, this._rollingSpeed);
 
             //다음 배너 나타나게 하기
             $inBanner.stop().animate({
                 top : 0,
                 opacity : 1
-            }, 600)
+            }, this._rollingSpeed)
         }
     </script>
 </head>

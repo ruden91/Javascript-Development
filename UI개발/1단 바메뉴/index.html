@@ -2,7 +2,7 @@
 *
 *	1단 네비게이션 개발
 *	제작자 : 박경두
-*	최종 수정일 : 2016-06-30
+*	최종 수정일 : 2016-07-01
 *
 *
 *
@@ -15,6 +15,7 @@
 	<title>navigation - UI development</title>
 	<link rel="stylesheet" href="css/nav.css">
 	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 </head>
 <body>
     <nav class="bar-menu">     
@@ -30,9 +31,9 @@
         <div class="bar"> </div>
     </nav>
 	<script>
-		$(function() {
-			var barMenu = new BarMenu('.bar-menu');
-		})
+        $(function() {
+            var barMenu = new BarMenu('.bar-menu');
+        })
 	</script>
 	<script src="js/first_navigation.js"></script>
 </body>

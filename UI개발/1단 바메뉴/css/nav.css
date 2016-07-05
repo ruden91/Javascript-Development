@@ -1,49 +1,46 @@
-	html, body, ul{
-		margin: 0;
-		padding: 0;
-	}
 
-	nav {
-	    position:relative;
-	    height:78px;  /* 30px(height) + 0px(margin)+20px(10*2 padding) + 8px(4*2 border height) 10px(bar height)*/
-	    border:7px solid #eee;
-	}
+.bar-menu {
+    position:relative;
+    height:78px;  /* 30px(height) + 0px(margin)+20px(10*2 padding) + 8px(4*2 border height) 10px(bar height)*/
+    border:7px solid #eee;
+    cursor:pointer;
+}
+.bar-menu ul.menu-body {
+    position:relative;
+    list-style: none;
+    margin-top:10px;
+    height:100%;
+}
 
-	nav ul.navMenu {
-	    position:relative;
-	    list-style: none;
-	    margin-top:10px;
-	    height:100%;
-	}
+.bar-menu ul.menu-body li {
+    height:30px;
+    padding:10px;
+    
+    margin-left:10px;
+    float:left;
+    line-height:30px;
+    vertical-align:middle;
+    border:4px solid #000;
+    display:inline-block;
+}
 
-	nav ul.navMenu li {
-	    height:30px;
-	    padding:10px;	    
-	    margin-left:10px;
-	    float:left;
-	    line-height:30px;
-	    vertical-align:middle;
-	    border:4px solid #000;
-	    display:inline-block;
-	}
+/* 선택 메뉴 아이템 스타일 */
+.bar-menu ul.menu-body li.select {
+    background-color:#ff0;
+}
 
-	/* 선택 메뉴 아이템 스타일 */
-	nav ul.navMenu li.select {
-	    background-color:#ff0;
-	}
+/* 오버 메뉴 아이템 스타일 */
+.bar-menu ul.menu-body li.over {
+    background-color:#eee;
+}
 
-	/* 오버 메뉴 아이템 스타일 */
-	nav ul.navMenu li.over {
-	    background-color:#eee;
-	}
-
-	nav .bar {
-	    width:0;
-	    height:10px;
-	    background-color:#f00;
-	    position: absolute;
-	    left:0;
-	    bottom:0;
-	}
+.bar-menu .bar {
+    width:0;
+    height:10px;
+    background-color:#f00;
+    position: absolute;
+    left:0;
+    bottom:0;
+}
 
 

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="css/accordion.css">
+	<style>
+	 	* {
+	 		padding:0;
+	 		margin:0;
+	 	}
+	 	
+		body{
+			font-size:9pt;
+		
+		}	
+		
+		#accordionMenu1 {
+			margin:100px;
+			width:300px;
+		}
+	</style>
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+	<script src="js/accordion.js"></script>
+	<script>
+		/*
+		 * step #01
+		 * 	- 레이아웃 잡기
+		 *
+		 */
+
+		 $(function() {
+		 	var accordion = new FolderAccordionMenu('.accordion-menu');
+		 })
+
+
+
+	</script>
+
+</head>
+
+<body>	
+
+	<ul class="accordion-menu" id="accordionMenu1">
+		<li data-extension='open'>
+			<div class="main-title"><span class="folder"> </span><a>menu1</a></div>
+			<ul class="sub">
+				<li><a>sub1-1</a></li>
+				<li><a>sub1-2</a></li>
+				<li><a>sub1-3</a></li>
+				<li><a>sub1-4</a></li>
+			</ul>
+		</li>		
+		
+		<li data-extension='close'>
+			<div class="main-title"><span class="folder "> </span><a>menu2</a></div>
+			<ul class="sub">
+				<li><a>sub2-1</a></li>
+				<li><a>sub2-2</a></li>
+			</ul>
+		</li>	
+		<li data-extension='close'>
+			<div class="main-title"><span class="folder"> </span><a>menu3</a> </div>
+			<ul class="sub">
+				<li><a>sub3-1</a></li>
+				<li><a>sub3-2</a></li>
+				<li><a>sub3-3</a></li>
+				<li><a>sub3-4</a></li>
+				<li><a>sub3-5</a></li>
+				<li><a>sub3-6</a></li>
+			</ul>
+		</li>
+		<li>
+			<div class="main-title"><span class="folder empty"> </span><a>menu4</a></div>
+		</li>
+	</ul> 
+
+</body>
+
+
+</html>
+
+
+

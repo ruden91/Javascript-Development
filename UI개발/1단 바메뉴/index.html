@@ -2,7 +2,7 @@
 *
 *	1단 네비게이션 개발
 *	제작자 : 박경두
-*	최종 수정일 : 2016-07-01
+*	최종 수정일 : 2016-07-04
 *
 *
 *
@@ -16,25 +16,69 @@
 	<link rel="stylesheet" href="css/nav.css">
 	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="js/first_navigation.js"></script>
 </head>
 <body>
-    <nav class="bar-menu">     
-        <ul class="navMenu">
-            <li>웹동네 홈</li>
-            <li>공개 스터디</li>
-            <li>온라인 동영상 강의</li>
-            <li>참여형 특강</li>
-            <li>정보공유 세미나</li>
-            <li>기업/단체강의</li>
+    <nav class="bar-menu" id="barMenu1">     
+        <ul class="menu-body">
+            <li>HOME</li>
+            <li>PORTFOLIO</li>
+            <li>INFORMATION</li>
+            <li>GALLERY</li>
+            <li>BOARD</li>
+            <li>CONTACT US</li>
+        </ul>
+        
+        <div class="bar"> </div>
+    </nav>
+
+    <!--멀티 바메뉴 제작-->
+    <nav class="bar-menu" id="barMenu2">     
+        <ul class="menu-body">
+            <li>HOME</li>
+            <li>PORTFOLIO</li>
+            <li>INFORMATION</li>
+            <li>GALLERY</li>
+            <li>BOARD</li>
+            <li>CONTACT US</li>
         </ul>
         
         <div class="bar"> </div>
     </nav>
 	<script>
         $(function() {
-            var barMenu = new BarMenu('.bar-menu');
-        })
+
+            /* *스타일이 제대로 적용되는지 확인!*
+            // 1. 오버 스타일 효과 테스트
+            $('.bar-menu .navMenu li:eq(0)').addClass('over');
+
+            // 2. 선택 스타일 효과 테스트
+            var $item = $('.bar-menu .navMenu li:eq(4)');
+
+            $item.addClass('select');
+
+            // 3. 선택한 메뉴 항목 위치로 bar 이동 테스트
+            // 이동 위치는 현재 위치 + margin-left
+            var left = $item.position().left + parseInt($item.css('margin-left'));
+            var width = $item.outerWidth();
+            $('.bar').css({
+                left : left,
+                width : width
+            })
+            */
+            var $barMenu = $('.bar-menu').barMenu();
+                $barMenu.on("select",function(e){
+                var oldIndex = -1;
+                if(e.$oldItem) {
+                    oldIndex = e.$oldItem.index();
+                }
+            
+                console.log("old = "+oldIndex+", new = "+e.$newItem.index());
+        });
+        });
+
+
 	</script>
-	<script src="js/first_navigation.js"></script>
+	<!--<script src="js/first_navigation.js"></script>-->
 </body>
 </html>

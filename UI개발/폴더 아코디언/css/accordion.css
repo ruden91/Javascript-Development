@@ -1,0 +1,88 @@
+
+.accordion-menu {
+    position:relative;
+    list-style: none;
+    border:4px solid #eee;
+}
+
+.accordion-menu>li {
+    overflow:hidden;
+    border:1px solid #000;
+    cursor:pointer;
+}
+
+
+	
+.accordion-menu li .main-title {
+    background-color:#fff;	
+    padding:10px;	
+    vertical-align:middle;
+    position:relative;
+    z-index:100;	
+}
+.accordion-menu li .main-title a {
+    display: inline-block;
+    height:20px;
+    line-height:20px;
+    text-align: center;
+    vertical-align:middle;
+}
+
+.accordion-menu li .main-title .folder {
+    display: inline-block;
+    width:20px;
+    height:20px;
+    overflow:hidden;
+    line-height:20px;
+    text-align: center;
+    vertical-align:middle;
+    margin-right:5px;
+    text-indent: -100px;
+    background-image:url("images/folder.png");
+    /* 기본은 .close */
+    background-position : 0px -40px; 
+	
+}
+
+.accordion-menu li .main-title .folder.empty {
+    background-position : 0 0;	
+}
+
+.accordion-menu li .main-title .folder.open {
+    background-position : 0px -20px;
+}
+
+.accordion-menu li .main-title .folder.close {
+    background-position : 0px -40px;
+}
+	
+
+
+.accordion-menu li ul.sub {	
+    list-style: none;	
+    margin-left:30px;
+    margin-bottom:20px;
+    z-index:90;
+    position:relative;
+}
+
+
+.accordion-menu li ul.sub.open {
+    display:block;
+}
+
+.accordion-menu li ul.sub.hide {
+    display:none;
+}
+
+.accordion-menu li ul.sub li {
+    height:20px;
+    padding:10px;
+    line-height:20px;
+    vertical-align:middle;
+    cursor:pointer;
+}
+
+.accordion-menu li ul.sub li.select {
+    background-color:#ff0;
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>dsfsdf</title>
+	<style>
+		html, body, ul, li {
+			margin: 0;
+			padding: 0;
+		}
+		ul {
+			list-style: none;
+			margin: 0 auto;
+			float: left;
+		}
+
+		ul li {
+			float: left;
+		}
+
+		[class^='btn'] {
+			width: 100px;
+			height: 50px;
+			margin: 10px;
+			font-size: 15px;
+			background: #ffc915;
+			border: none;
+			color:white;
+		}
+		[class^='btn']:hover {
+			background: #ffe000;
+		}
+
+		
+		.answerBox {
+			width: 960px;
+			height: 80px;
+			margin: 0 auto;
+		}
+
+		#output {
+			margin: 0 auto;
+			width: 960px;
+			height: 300px;
+		}
+	</style>
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+	<div class="answerBox">
+		<ul>
+			<li><button class="btn1">3단 출력</button></li>
+			<li><button class="btn2">6단 출력</button></li>
+			<li><button class="btn3">9단 출력</button></li>
+			<li><button class="btn4">지우기</button></li>
+		</ul>
+	</div>
+		
+		<div id="output">
+			
+		</div>
+	<script>
+		$(function() {
+			var my99dan = new My99dan();
+
+			$('.btn1').click(function() {
+				//3단을 출력하는 메서드를 호출해 주세요.
+				my99dan.print99dan(3);
+
+			})
+
+			$('.btn2').click(function() {
+				//6단을 출력하는 메서드를 호출해 주세요.
+				my99dan.print99dan(6);
+			})
+
+			$('.btn3').click(function() {
+				//9단을 출력하는 메서드를 호출해 주세요.
+				my99dan.print99dan(9);
+			})
+
+			$('.btn4').click(function() {
+				//구구단 지우는 메서드를 호출해 주세요.
+				my99dan.clear();
+			})
+		})
+
+		function My99dan() {
+
+			// 출력 노드를 프로퍼티로 만들기
+			this.$output = $('#output');
+		}
+
+		My99dan.prototype.print99dan = function(dan) {
+			var result = '';
+			for(var i = 1; i <= 9; i++) {
+				result += dan + 'X' + i + '=' + (dan*i) + '<br>'
+			}
+			this.$output.html(result);
+		}
+
+		My99dan.prototype.clear = function() {
+			this.$output.html('');
+		}
+	</script>
+</body>
+</html>

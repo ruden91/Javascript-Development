@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>dsfsdf</title>
+	<style>
+		html, body, ul, li {
+			margin: 0;
+			padding: 0;
+		}
+		ul {
+			list-style: none;
+			margin: 0 auto;
+			float: left;
+		}
+
+		ul li {
+			float: left;
+		}
+
+		[class^='btn'] {
+			width: 100px;
+			height: 50px;
+			margin: 10px;
+			font-size: 15px;
+			background: #ffc915;
+			border: none;
+			color:white;
+		}
+		[class^='btn']:hover {
+			background: #ffe000;
+		}
+
+		
+		.answerBox {
+			width: 960px;
+			height: 80px;
+			margin: 0 auto;
+		}
+
+		#output {
+			margin: 0 auto;
+			width: 960px;
+			height: 300px;
+			background: #f7f7f2;
+		}
+	</style>
+	<script   src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+</head>
+<body>
+<div>
+    숫자1:<input id="val1">, 연산자:<input id="op">, 숫자2:<input id="val2"><button class="btn">확인</button>
+
+<div id="output">
+    여기에 결과를 출력 해주세요.
+</div>
+	<script>
+		$(function() {
+			var cal = new Calculator();
+		})
+
+		function Calculator() {
+			// 프로퍼티 선언
+			this.$val1 = null;
+			this.operator = null;
+			this.$val2 = null;
+			this.$output = null;
+
+			this.init();
+			this.initEvent();
+
+		}
+
+		// 요소 초기화
+		Calculator.prototype.init = function() {
+			this.$val1 = $('#val1');
+			this.operator = $('#op');
+			this.$val2 = $('#val2');
+			this.$output = $('#output');
+		}
+
+		// 이벤트 초기화
+		Calculator.prototype.initEvent = function() {
+			var that = this;
+
+			$('.btn').click(function() {
+
+				// 메서드 호출
+				that.exeCal();
+			})
+		}
+
+		//입력 정보를 구한 후 계산 메서드 호출
+		Calculator.prototype.exeCal = function() {
+
+			// 입력 정보 구하기.
+			var val1 = parseInt(this.$val1.val());
+			var operator = this.operator.val();
+			var val2 = parseInt(this.$val2.val());
+
+			this.calculate(operator, val1, val2);
+		}
+
+		// 계산기 메서드
+		Calculator.prototype.calculate = function(op, num1, num2) {
+			var result = '';
+
+			switch (op) {
+
+				case '+' :
+					result = num1 + num2;
+					break;
+
+				case '-' :
+					result = num1 - num2;
+					break;
+
+				case '*' :
+					result = num1 * num2;
+					break;
+
+				case '/' :
+					result = num1 / num2;
+					break;
+
+				default :
+					result = '존재하지 않는 연산자입니다.';
+			}
+
+			this.$output.html(result);
+		}
+	</script>
+</body>
+</html>

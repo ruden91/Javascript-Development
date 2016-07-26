@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>scroll_top example</title>
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	<style>
+		body,ul, .logo p{
+			margin: 0;
+		}
+		a {
+			text-decoration: none;
+		}
+		header p {
+			line-height: 700px;
+			vertical-align: middle;
+			color:#fff;
+			font-size: 80px;
+			text-align: center;
+			margin: 0;
+			padding: 0;
+		}
+		#goingTop {
+			display: none;
+			position: fixed;
+			width: 60px;
+			height: 60px;
+			border-radius:30px;
+			background: rgb(0,154,200);
+			bottom: 40px;
+			right: 40px;
+			cursor:pointer;
+		}
+		#goingTop p{
+			font-size: 18px;
+			color:#fff;
+			font-weight: bold;
+			text-align: center;
+		}
+		header {
+			background-color:rgba(143,24,34,0.5);
+			height:2000px;
+		}
+
+		/* first navigation */
+		.logo {
+			float: left;
+			padding: 15px;
+		}
+		.first_nav {
+			background-color: #fff139;
+			height:50px;
+		}
+		.first_nav ul{
+			float: right;
+		}
+		.first_nav li {
+			display: inline-block;
+		}
+		.first_nav li a {
+			display: block;
+			padding: 15px;
+		}
+		/* second navigation */
+		.second_nav {
+			width: 100%;
+			position: fixed;
+			top: 0;
+			left: 0;
+			display: none;
+			background-color: rgb(0,154,200);
+			height: 80px;
+		}
+		.second_nav ul {
+			float: right;
+		}
+		.second_nav li {
+			display: inline-block;
+		}
+		.second_nav a {
+			color: #fff;
+			display: block;
+			padding: 25px;
+		}
+		.second_nav a:hover {
+			color: #000;
+		}
+	</style>
+</head>
+<body>
+	<nav class="first_nav">
+		<div class="logo">
+			<p>WebRuden</p>
+		</div>
+		<ul>
+			<li><a href="#">menu1</a></li>
+			<li><a href="#">menu2</a></li>
+			<li><a href="#">menu3</a></li>
+			<li><a href="#">menu4</a></li>
+			<li><a href="#">menu5</a></li>
+			<li><a href="#">menu6</a></li>
+		</ul>
+	</nav>
+	<nav class="second_nav">
+		<div class="logo">
+			<p>WebRuden</p>
+		</div>
+		<ul>
+			<li><a href="#">menu1</a></li>
+			<li><a href="#">menu2</a></li>
+			<li><a href="#">menu3</a></li>
+			<li><a href="#">menu4</a></li>
+			<li><a href="#">menu5</a></li>
+			<li><a href="#">menu6</a></li>
+		</ul>
+	</nav>
+	<header>
+		<p>Scroll Up</p>
+	</header>
+	<div id="goingTop">
+		<p>TOP</p>
+	</div>
+	<script>
+		$(document).scroll(function() {
+			var topNav = $('#goingTop');
+			var firstNav = $('.first_nav');
+			var secondNav = $('.second_nav');
+			var position = $(window).scrollTop();
+
+			if (position > 250) {
+				topNav.fadeIn(500);
+				firstNav.fadeOut(700);
+				secondNav.fadeIn(700);
+			} else if (position < 250) {
+				topNav.fadeOut(500);
+				firstNav.fadeIn(300);
+				secondNav.fadeOut(100);
+			}
+		});
+
+		$('#goingTop').click(function() {
+			$('html, body').animate({
+				scrollTop : 0
+			}, 1000);
+		})
+	</script>
+</body>
+</html>

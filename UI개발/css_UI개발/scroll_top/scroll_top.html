@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>scroll_top example</title>
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	<style>
+		body {
+			margin: 0;
+		}
+		header p {
+			line-height: 700px;
+			vertical-align: middle;
+			color:#fff;
+			font-size: 80px;
+			text-align: center;
+			margin: 0;
+			padding: 0;
+		}
+		#goingTop {
+			display: none;
+			position: fixed;
+			width: 60px;
+			height: 60px;
+			border-radius:30px;
+			background: rgb(0,154,200);
+			bottom: 40px;
+			right: 40px;
+			cursor:pointer;
+		}
+		#goingTop p{
+			font-size: 18px;
+			color:#fff;
+			font-weight: bold;
+			text-align: center;
+		}
+		nav {
+			background-color: #fff139;
+			height:80px;
+		}
+		header {
+			background-color:rgba(143,24,34,0.5);
+			height:2000px;
+		}
+	</style>
+</head>
+<body>
+	<nav>
+
+	</nav>
+	<header>
+		<p>Scroll Up</p>
+	</header>
+	<div id="goingTop">
+		<p>TOP</p>
+	</div>
+	<script>
+		$(document).scroll(function() {
+			var topNav = $('#goingTop');
+			var position = $(window).scrollTop();
+
+			if (position > 250) {
+				topNav.fadeIn(500);
+			} else if (position < 250) {
+				topNav.fadeOut(500);
+			}
+		});
+
+		$('#goingTop').click(function() {
+			$('html, body').animate({
+				scrollTop : 0
+			}, 1000);
+		})
+	</script>
+</body>
+</html>
